@@ -1,0 +1,10 @@
+flowchart LR
+    B["MIDAS Backend"]
+    B --> Banxico["Banxico · tipos de cambio"]
+    B --> Fact["Facturama · CFDI / SAT"]
+    B --> Stripe["Stripe · pagos"]
+    B --> Conekta["Conekta · pagos MX"]
+    B --> SF["Salesforce · CRM"]
+    B --> Pusher["Pusher BEAMS · push"]
+    B --> SFTP["SFTP · PLD (AMIS/CNBV)"]
+    B --> RC["reCAPTCHA v3"]

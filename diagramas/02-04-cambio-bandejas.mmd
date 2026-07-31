@@ -1,0 +1,5 @@
+graph LR
+    E["Emisión · bandeja 8<br/>Captura"] -->|sucesion| SU["Suscripción · bandeja 1<br/>Revisión"]
+    SU -->|autoriza| LE["Legal · bandeja 5<br/>Autorización"]
+    SU -->|rechaza| E
+    LE -->|tarea final| FIN["Cerrado"]

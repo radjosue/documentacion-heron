@@ -1,0 +1,9 @@
+graph TD
+    F["frontend/"]
+    F --> P["pages/ — una ruta por módulo/portal"]
+    F --> HOC["hocs/ — layout + sesión (token) por portal"]
+    F --> CX["contexts/ — UserContext · InputContext"]
+    F --> CMP["components/ — submódulo: Local · Servidor · Básicos"]
+    P --> HOC
+    HOC --> CX
+    HOC --> CMP

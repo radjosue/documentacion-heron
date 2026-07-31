@@ -1,0 +1,225 @@
+{
+  "title": "captura - Solicitud de Revisión Documental",
+  "frontend": {
+    "etapas": {
+      "0.0": {
+        "title": "Datos del convenio",
+        "style": "HIR",
+        "ruta": {
+          "0": "Revisión Documental",
+          "0.0": "Datos",
+          "0.1": "Documentación"
+        },
+        "buttons": {
+          "siguiente": {
+            "name": "Siguiente",
+            "type": "submitFormValid",
+            "action": "<hash AccionesTramite>",
+            "message": "Enviando a revisión"
+          },
+          "guardar": {
+            "name": "Guardar",
+            "type": "submitSave",
+            "action": "<hash AccionesEtapa>",
+            "message": "Guardando"
+          }
+        },
+        "forms": [
+          {
+            "typeForm": "Formulario",
+            "blockForm": false,
+            "validForm": true,
+            "refForm": "datosConvenio",
+            "propsForm": {}
+          }
+        ]
+      },
+      "0.1": {
+        "title": "Documentación",
+        "style": "HIR",
+        "ruta": {
+          "0": "Revisión Documental",
+          "0.0": "Datos",
+          "0.1": "Documentación"
+        },
+        "buttons": {
+          "avanzar": {
+            "name": "Siguiente",
+            "type": "submitFormValid",
+            "action": "<hash AccionesTramite>",
+            "message": "Enviando"
+          },
+          "anterior": {
+            "name": "Anterior",
+            "type": "submitEtapa",
+            "action": "0.0"
+          }
+        },
+        "forms": [
+          {
+            "typeForm": "FormularioArchivos",
+            "blockForm": false,
+            "validForm": true,
+            "refForm": "archivosConvenio",
+            "propsForm": {}
+          }
+        ]
+      }
+    }
+  },
+  "backend": {
+    "Siguiente": {
+      "validacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "Datos validados con éxito."
+            }
+          },
+          "camposObligatorios": {
+            "datosConvenio": {
+              "nombreConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El nombre del convenio es obligatorio."
+                }
+              },
+              "montoConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El monto es obligatorio."
+                }
+              }
+            }
+          },
+          "camposValidaciones": {
+            "reglasMonto": {
+              "between~montoConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El monto debe estar entre 0 y 10000000."
+                },
+                "parametros": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "montoConvenio"
+                  }
+                },
+                "opciones": {
+                  "0-10000000": {
+                    "estatus": {
+                      "valido": true,
+                      "respuesta": {
+                        "etapa": "0.0",
+                        "codigo": 201,
+                        "mensaje": "OK"
+                      }
+                    },
+                    "camposObligatorios": null,
+                    "camposValidaciones": null
+                  }
+                },
+                "parametrosDinamicos": null
+              }
+            }
+          }
+        },
+        "0.1": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.1",
+              "codigo": 201,
+              "mensaje": "Documentos recibidos."
+            }
+          },
+          "camposObligatorios": {
+            "visualizadorDocumentos": {
+              "convenioFirmado": {
+                "respuesta": {
+                  "etapa": "0.1",
+                  "codigo": 400,
+                  "mensaje": "Adjunta el convenio firmado."
+                }
+              }
+            }
+          },
+          "camposValidaciones": null
+        }
+      },
+      "actualizacion": {
+        "0.0": {
+          "funcionesActualizacion": {
+            "guardarFechaActual": {
+              "parametros": {
+                "formato": {
+                  "formulario": null,
+                  "valor": "%d/%m/%Y %H:%M"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "fechaCaptura": {
+                  "formulario": "infoTramite",
+                  "valor": "fechaCaptura"
+                }
+              }
+            },
+            "==~estatus": {
+              "parametros": {
+                "valor": {
+                  "formulario": null,
+                  "valor": "CAPTURADO"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "estatusConvenio": {
+                  "formulario": "infoTramite",
+                  "valor": "estatusConvenio"
+                }
+              }
+            }
+          },
+          "camposActualizaciones": null
+        },
+        "0.1": {
+          "funcionesActualizacion": null,
+          "camposActualizaciones": null
+        }
+      },
+      "sucesion": {
+        "sucesor": "2",
+        "validacionSucesion": {
+          "validacion": "contieneDatos",
+          "opciones": {
+            "*": {
+              "sucesor": "2",
+              "typeSucesor": "Autoriza",
+              "indexSucesor": 0,
+              "usuario": "?usuarioCarrusel",
+              "bandeja": 5,
+              "estatus": 0,
+              "etapaId": "0.0",
+              "validacionSucesion": null
+            }
+          },
+          "parametrosDinamicos": {
+            "valor": {
+              "formulario": "datosConvenio",
+              "valor": "nombreConvenio"
+            }
+          }
+        }
+      }
+    }
+  },
+  "consulta": {},
+  "bitacora": {}
+}

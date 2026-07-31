@@ -1,0 +1,15 @@
+sequenceDiagram
+    actor U as Usuario
+    participant BE as Django / Heron
+    participant CR as ConfigHeron (cola)
+    participant RB as robot_procesos (cron)
+    participant MDB as MongoDB / PG
+
+    U->>BE: AccionesTramite → sucesion tipo "proceso"
+    BE->>CR: Encola nuevo proceso (parámetros zlib+base64)
+    BE-->>U: Respuesta inmediata (el folio padre avanza)
+    Note over CR,RB: Ciclo cron ≤ 5 min
+    RB->>CR: Lee entradas pendientes
+    RB->>MDB: Crea nuevo folio independiente
+    RB->>MDB: INSERT TrackingHeron (folio hijo)
+    Note over MDB: El folio hijo corre sin bloquear al padre

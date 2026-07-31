@@ -1,0 +1,9 @@
+flowchart LR
+    REQ["Requerimiento<br/>Revisión Documental"] --> P["Proceso 11-40-1.0"]
+    P --> T1["T1 Captura<br/>Comercial · bandeja 11"]
+    T1 --> T2["T2 Revisión Legal<br/>Legal · bandeja 5"]
+    T2 --> T3["T3 Autorización<br/>Jefe de Área"]
+    T3 -->|autoriza| T8["T8 Completado<br/>(final)"]
+    T3 -->|rechaza| T1
+    T2 -->|rechaza| T1
+    T1 -->|cancela| T9["T9 Cancelado<br/>(final)"]

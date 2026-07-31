@@ -1,0 +1,6 @@
+flowchart TD
+    NG["Nginx :443 · TLS"] --> GU["Gunicorn · N workers"]
+    NG --> PM["PM2 · Next.js :3000 · proceso único"]
+    GU --> W1["Worker 1 → pool PG + Mongo"]
+    GU --> W2["Worker 2 → pool PG + Mongo"]
+    GU --> WN["Worker N → pool PG + Mongo"]

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant U as Usuario
+    participant BE as Heron Backend
+    participant CR as ConfigHeron (cola)
+    participant RB as robot_procesos
+    participant MDB as MongoDB
+
+    U->>BE: avance en tarea con sucesion tipo "proceso"
+    BE->>BE: ejecuta pipeline completo del folio principal
+    BE->>CR: encola proceso paralelo con parámetros comprimidos
+    BE-->>U: folio principal avanza normalmente
+
+    Note over CR,RB: ≤ 5 min (cron)
+    RB->>CR: lee entrada pendiente
+    RB->>MDB: crea folio hijo — INSERT TrackingHeron + DatosTareasHeron
+    Note over MDB: el folio hijo es independiente desde este momento

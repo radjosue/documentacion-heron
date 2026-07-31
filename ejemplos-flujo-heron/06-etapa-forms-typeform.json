@@ -1,0 +1,110 @@
+{
+  "forms": [
+    {
+      "typeForm": "Formulario",
+      "refForm": "datosGenerales",
+      "blockForm": false,
+      "validForm": true,
+      "propsForm": {
+        "title": "Datos generales",
+        "icon": "bi bi-pencil-square",
+        "variant": "Row",
+        "fields": {
+          "0": {
+            "RFC": {
+              "ref": "rfc",
+              "type": "rfc",
+              "variant": "InputGroup",
+              "modifier": {},
+              "config": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "typeForm": "Domicilio",
+      "refForm": "domicilio",
+      "blockForm": false,
+      "validForm": true,
+      "propsForm": {
+        "usarDomicilioExtranjero": false,
+        "usarDatos": true
+      }
+    },
+    {
+      "typeForm": "FormularioSelect",
+      "refForm": "coberturasOpcionales",
+      "blockForm": false,
+      "validForm": true,
+      "url": "api/<hash del endpoint>/",
+      "propsForm": {
+        "selectFormsId": "coberturaId",
+        "minSelectedOptions": 1,
+        "optionalOptions": [
+          "GastosFunerarios"
+        ]
+      }
+    },
+    {
+      "typeForm": "FormularioLista",
+      "refForm": "asegurados",
+      "blockForm": false,
+      "validForm": true,
+      "datosDefault": {
+        "edad": ""
+      },
+      "propsForm": {
+        "type": "Asegurado",
+        "min": 1,
+        "max": 10,
+        "copyData": true,
+        "forms": [
+          {
+            "typeForm": "DatosPersonales",
+            "refForm": "datosAsegurado",
+            "blockForm": false,
+            "validForm": true,
+            "propsForm": {
+              "tipo": "Asegurado"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "typeForm": "VisualizadorDocumentos",
+      "refForm": "documentosEmision",
+      "blockForm": false,
+      "validForm": false,
+      "url": "api/<hash del endpoint>/",
+      "propsForm": {
+        "title": "Documentos",
+        "valid": true,
+        "remove": false
+      }
+    },
+    {
+      "typeForm": "Tabla",
+      "refForm": "resumenRecibos",
+      "blockForm": false,
+      "validForm": false,
+      "numRows": 5,
+      "datosIniciales": {
+        "header": [
+          "Recibo",
+          "Monto"
+        ],
+        "body": [
+          {
+            "Recibo": "1/12",
+            "Monto": "$1,200.00"
+          }
+        ]
+      },
+      "propsForm": {
+        "title": "Recibos"
+      }
+    }
+  ]
+}

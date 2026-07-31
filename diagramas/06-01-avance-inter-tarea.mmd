@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant U as Usuario
+    participant HOC as appHeron (Next.js)
+    participant BE as Heron Backend
+    participant MDB as MongoDB
+    participant PG as PostgreSQL
+
+    U->>HOC: completa etapa, clic en acción de avance
+    HOC->>HOC: ¿JWT expira en menos de 2 min?
+    alt sí
+        HOC->>BE: POST /api/hash_refresh/ {token_drf}
+        BE-->>HOC: nuevo JWT (5 min)
+    end
+    HOC->>BE: POST /api/AccionesTramite/ {datosTarea, etapaActual, accionId}
+
+    BE->>MDB: GET FormulariosHeron (JSON del proceso)
+    MDB-->>BE: config del proceso
+
+    BE->>BE: pipeline — validacion, consulta, actualizacion
+    BE->>BE: sucesion — resuelve tarea, bandeja y usuario destino
+
+    BE->>PG: INSERT TrackingHeron (nueva tarea, usuario asignado)
+    BE->>MDB: INSERT DatosTareasHeron (trackingFinal=True)
+
+    BE-->>HOC: { etapa, datos, codigo: 201 }
+    HOC-->>U: renderiza la pantalla correspondiente

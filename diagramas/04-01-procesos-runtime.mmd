@@ -1,0 +1,12 @@
+graph TD
+    Nginx["Nginx<br/>Proxy reverso / punto de entrada único"]
+    Gunicorn["Gunicorn<br/>Django — WSGI multiproceso<br/>:8000"]
+    PM2["PM2<br/>Next.js<br/>:3000"]
+    Cron["Cron Ubuntu<br/>c/5 minutos"]
+
+    Nginx -->|":8000"| Gunicorn
+    Nginx -->|":3000"| PM2
+    Cron --> R1["robot_acciones<br/>acciones Heron en cola"]
+    Cron --> R2["robot_procesos<br/>procesos paralelos independientes"]
+    Cron --> R3["robot_subprocesos<br/>subprocesos embebidos"]
+    Cron --> R4["robot_tramites<br/>renovaciones y recordatorios"]

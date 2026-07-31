@@ -1,0 +1,12 @@
+stateDiagram-v2
+    [*] --> Iniciado
+    Iniciado --> EnCaptura : asignado a usuario/bandeja
+    EnCaptura --> EnCaptura : repetir
+    EnCaptura --> EnRevision : sucesion
+    EnRevision --> EnCaptura : rechaza
+    EnRevision --> Autorizado : sucesion
+    Autorizado --> Cerrado : tarea final
+    Cerrado --> [*]
+
+    EnCaptura --> Detenido : flag detenido (SLA pausado)
+    Detenido --> EnCaptura : reanudado

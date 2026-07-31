@@ -1,0 +1,15 @@
+graph TD
+    Heron["Heron<br/>Motor de Trámites<br/>orquestador central"]
+
+    Heron --> Midas["Midas<br/>Pólizas · Endosos"]
+    Heron --> Cont["Contabilidad<br/>Asientos"]
+    Heron --> Sin["Siniestros<br/>Liquidaciones"]
+    Heron --> Fondo["FondoAhorro<br/>Reservas"]
+    Heron --> Rea["Reaseguro<br/>Excedentes"]
+
+    Usuarios["Usuarios · Auth/Roles"] -. autentica .-> Heron
+    Talos["Talos · Seguridad"] -. valida .-> Heron
+    Kronos["Kronos · Batch/Robots"] -. difiere .-> Heron
+    Hermes["Hermes · Notificaciones"] -. notifica .-> Heron
+    Iris["Iris · Analítica"] -. consume métricas .-> Heron
+    Agora["Agora · Público"] -. inicia trámites .-> Heron

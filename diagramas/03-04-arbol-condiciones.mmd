@@ -1,0 +1,9 @@
+flowchart TB
+    V["Valor resuelto<br/>(parametrosDinamicos.valor)"] --> OP{"operador de opciones<br/>==, &gt;, regex, between…"}
+    OP -->|"llave literal coincide"| CASE["entra a la opción y hace BREAK<br/>(caso de un switch)"]
+    OP -->|"llave &quot;*&quot; y el operador pasa"| STAR["entra a la opción sin BREAK<br/>(if / default)"]
+    CASE --> REC{"¿la opción anida otro<br/>camposValidaciones / validacionSucesion?"}
+    STAR --> REC
+    REC -->|sí| DEEP["recursa a un nivel más profundo<br/>— el if más profundo decide"]
+    REC -->|no| LEAF["estatus.valido: true → continúa (OK)<br/>estatus.valido: false → corte con respuesta (negado)"]
+    DEEP --> OP

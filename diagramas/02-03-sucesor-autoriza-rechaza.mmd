@@ -1,0 +1,9 @@
+graph LR
+    TA["Tarea actual"]
+    S{"sucesion<br/>evalúa condición"}
+    A["Sucesor de<br/>TareasHeron.autoriza"]
+    R["Sucesor de<br/>TareasHeron.rechaza"]
+
+    TA --> S
+    S -->|condición cumplida| A
+    S -->|condición no cumplida| R

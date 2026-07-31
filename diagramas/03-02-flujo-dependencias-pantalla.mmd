@@ -1,0 +1,8 @@
+flowchart TD
+    PG["page.js (pages/heron/interno/...)"] --> HOC["appHeron(page)"]
+    HOC --> UC["UserContext: token · sesión"]
+    HOC --> TR["Tramite / TramitePaginacion<br/>(components/Servidor/Formularios/)"]
+    TR --> SW["switch(typeForm) → componente"]
+    TR --> IC["InputContext"]
+    TR --> API["POST /api/hash/"]
+    API --> DJ["Django — motor Héron"]

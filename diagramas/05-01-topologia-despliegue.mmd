@@ -1,0 +1,19 @@
+graph TD
+    DNS["HostGator DNS<br/>digitalhir.hirseguros.mx"]
+    VPN["VPN<br/>acceso interno / respaldo DNS"]
+    NG["Nginx<br/>Proxy reverso · Puerto 80/443"]
+    PM2["PM2<br/>Next.js · :3000"]
+    GUN["Gunicorn<br/>Django · :8000"]
+    PG[("PostgreSQL<br/>:5432")]
+    MDB[("MongoDB<br/>:27017")]
+    LO["LibreOffice<br/>docx to PDF"]
+    CRON["Cron Ubuntu<br/>c/5 min"]
+
+    DNS -->|HTTPS| NG
+    VPN -.->|acceso directo| NG
+    NG -->|/api/*| GUN
+    NG -->|/*| PM2
+    GUN -->|ORM| PG
+    GUN -->|Djongo/PyMongo| MDB
+    GUN -->|subprocess| LO
+    CRON -->|robots| GUN

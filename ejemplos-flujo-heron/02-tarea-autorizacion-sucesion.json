@@ -1,0 +1,132 @@
+{
+  "title": "autorizacion - Solicitud de Revisión Documental",
+  "frontend": {
+    "etapas": {
+      "0.0": {
+        "title": "Autorización",
+        "style": "HIR",
+        "ruta": {
+          "0": "Revisión Documental",
+          "0.0": "Dictamen"
+        },
+        "buttons": {
+          "autorizar": {
+            "name": "Autorizar",
+            "type": "submitFormValid",
+            "action": "<hash AccionesTramite>",
+            "message": "Autorizando"
+          },
+          "rechazar": {
+            "name": "Rechazar",
+            "type": "submitFormValid",
+            "action": "<hash AccionesTramite>",
+            "message": "Rechazando"
+          }
+        },
+        "forms": [
+          {
+            "typeForm": "Formulario",
+            "blockForm": false,
+            "validForm": true,
+            "refForm": "dictamen",
+            "propsForm": {}
+          }
+        ]
+      }
+    }
+  },
+  "backend": {
+    "Autorizar": {
+      "validacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "OK"
+            }
+          },
+          "camposObligatorios": null,
+          "camposValidaciones": null
+        }
+      },
+      "sucesion": {
+        "sucesor": "8",
+        "validacionSucesion": {
+          "validacion": "contieneDatos",
+          "opciones": {
+            "*": {
+              "sucesor": "8",
+              "typeSucesor": "Autoriza",
+              "indexSucesor": 0,
+              "usuario": null,
+              "bandeja": 11,
+              "estatus": 3,
+              "etapaId": "0.0",
+              "validacionSucesion": null
+            }
+          },
+          "parametrosDinamicos": {
+            "valor": {
+              "formulario": "dictamen",
+              "valor": "comentario"
+            }
+          }
+        }
+      }
+    },
+    "Rechazar": {
+      "validacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "OK"
+            }
+          },
+          "camposObligatorios": {
+            "dictamen": {
+              "comentario": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "Indica el motivo del rechazo."
+                }
+              }
+            }
+          },
+          "camposValidaciones": null
+        }
+      },
+      "sucesion": {
+        "sucesor": "1",
+        "validacionSucesion": {
+          "validacion": "contieneDatos",
+          "opciones": {
+            "*": {
+              "sucesor": "1",
+              "typeSucesor": "Rechaza",
+              "indexSucesor": 0,
+              "usuario": "?TareaProcesada",
+              "bandeja": 11,
+              "estatus": 1,
+              "etapaId": "0.0",
+              "validacionSucesion": null
+            }
+          },
+          "parametrosDinamicos": {
+            "valor": {
+              "formulario": "dictamen",
+              "valor": "comentario"
+            }
+          }
+        }
+      }
+    }
+  },
+  "consulta": {},
+  "bitacora": {}
+}

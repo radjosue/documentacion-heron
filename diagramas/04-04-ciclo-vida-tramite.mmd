@@ -1,0 +1,21 @@
+sequenceDiagram
+    actor Usuario
+    participant FE as Next.js
+    participant BE as Django / Heron
+    participant MDB as MongoDB
+    participant PG as PostgreSQL
+
+    Usuario->>FE: Submit en etapa N
+    FE->>BE: POST /api/hash/ {datosTarea, etapaActual, accionId}
+
+    BE->>MDB: GET FormulariosHeron
+    MDB-->>BE: JSON del proceso
+
+    BE->>BE: ejecuta el pipeline de fases (ver Vista de Desarrollo)
+    BE->>BE: sucesion (resolver siguiente tarea y usuario)
+
+    BE->>PG: INSERT/UPDATE TrackingHeron
+    BE->>MDB: INSERT/UPDATE DatosTareasHeron (trackingFinal=True)
+
+    BE-->>FE: {etapa, datos, errores, sucesion, codigo}
+    FE-->>Usuario: Renderiza siguiente etapa

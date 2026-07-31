@@ -1,0 +1,87 @@
+{
+  "typeForm": "Formulario",
+  "refForm": "datosGenerales",
+  "blockForm": false,
+  "validForm": true,
+  "datosIniciales": {
+    "nombreContratante": "JUAN PEREZ LOPEZ",
+    "estadoCivil": "Casado(a)"
+  },
+  "propsForm": {
+    "title": "Datos generales",
+    "icon": "bi bi-person-fill",
+    "legend": "Capture los datos del contratante.",
+    "style": "HIR",
+    "variant": "Row",
+    "fields": {
+      "0": {
+        "Nombre completo": {
+          "ref": "nombreContratante",
+          "type": "text",
+          "variant": "InputGroup",
+          "modifier": {
+            "clearButton": true
+          },
+          "config": {
+            "maxLength": 100
+          },
+          "value": null,
+          "errormessage": "El nombre es obligatorio.",
+          "valid": true,
+          "block": false
+        },
+        "RFC": {
+          "ref": "rfcContratante",
+          "type": "rfc",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "Detectamos un error en tu RFC.",
+          "query": "consultarDatosContratante",
+          "blockValue": true
+        }
+      },
+      "1": {
+        "Estado civil": {
+          "ref": "estadoCivil",
+          "type": "select",
+          "variant": "InputGroup",
+          "modifier": {
+            "options": [
+              "Soltero(a)",
+              "Casado(a)",
+              "Union Libre",
+              "Viudo(a)",
+              "Divorciado(a)"
+            ]
+          },
+          "config": {},
+          "errormessage": "Seleccione un estado civil."
+        },
+        "Fecha de nacimiento": {
+          "ref": "fechaNacimiento",
+          "type": "date",
+          "variant": "InputGroup",
+          "modifier": {
+            "optional": false
+          },
+          "config": {
+            "min": "1900-01-01"
+          },
+          "errormessage": "Fecha de nacimiento invalida."
+        }
+      },
+      "3": {
+        "Acepto el aviso de privacidad": {
+          "ref": "aceptaAviso",
+          "type": "checkBox",
+          "variant": "Input",
+          "modifier": {},
+          "config": {},
+          "value": false,
+          "errormessage": "Debe aceptar el aviso de privacidad."
+        }
+      }
+    }
+  }
+}

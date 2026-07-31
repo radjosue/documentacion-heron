@@ -1,0 +1,42 @@
+flowchart TB
+    FE["JSON del Frontend<br/>formData de la etapa"]
+    DTin["datosTarea previo<br/>DatosTareasHeron"]
+
+    subgraph ACT["ETAPA ACTUAL"]
+      direction TB
+      DEP["depurar<br/>limpia el JSON del front"]
+      PRE["preValidacion<br/>valida el JSON del front"]
+      UNI(["unión front + datosTarea"])
+      VAL["validacion"]
+      ENS["ensamblar"]
+      POST["postValidacion"]
+      CON["consulta"]
+      ACTU["actualizacion"]
+      ACC["accion"]
+      SUB["subAccion"]
+      DEP --> PRE --> UNI --> VAL --> ENS --> POST --> CON --> ACTU --> ACC --> SUB
+    end
+
+    subgraph POSTE["ETAPA POSTERIOR"]
+      direction TB
+      OBT["obtencion"] --> FIL["filtro"] --> CFG["configuracion"]
+    end
+
+    DTstore[("datosTarea<br/>actualizado")]
+    OUT["JSON de salida<br/>al Frontend"]
+    SUC["sucesion<br/>(y repetir / proceso / subProceso)<br/>cambio de tarea"]
+
+    FE --> DEP
+    DTin --> UNI
+    SUB --> OBT
+    CFG --> SUC
+
+    ENS -. persiste si validó .-> DTstore
+    CON -. persiste .-> DTstore
+    ACTU -. persiste .-> DTstore
+    ACC -. persiste .-> DTstore
+    SUB -. persiste .-> DTstore
+
+    OBT -. retorna .-> OUT
+    FIL -. filtra y retorna .-> OUT
+    CFG -. inyecta y retorna .-> OUT

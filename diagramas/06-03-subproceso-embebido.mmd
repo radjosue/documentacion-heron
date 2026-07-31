@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant U as Usuario
+    participant BE as Heron Backend
+    participant CR as ConfigHeron (cola)
+    participant RB as robot_subprocesos
+    participant SVC as Servicio externo / lógica interna
+
+    U->>BE: avance en tarea con sucesion tipo "subproceso"
+    BE->>CR: encola subproceso con parámetros
+    BE-->>U: folio queda Detenido (SLA pausado)
+
+    Note over CR,RB: ≤ 5 min (cron)
+    RB->>CR: lee subproceso pendiente
+    RB->>SVC: ejecuta operación (consulta, cálculo, integración externa)
+    SVC-->>RB: resultado
+    RB->>BE: completa subproceso — escribe resultado en DatosTareasHeron
+    BE->>BE: reactiva folio padre, retoma sucesión desde el punto de espera
+    BE-->>U: folio reanuda en bandeja correspondiente

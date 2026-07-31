@@ -1,0 +1,15 @@
+graph LR
+    P["Proceso · ProcesosHeron<br/>procesoId · nombre · área"]
+    T1["Tarea 1 · TareasHeron<br/>autoriza / rechaza · SLA · tareaFinal"]
+    T2["Tarea 2"]
+    TN["Tarea N · tareaFinal=True"]
+    E0["Etapa 0.0"]
+    E1["Etapa 0.1<br/>(FormulariosHeron — MongoDB)"]
+
+    P --> T1
+    P --> T2
+    P --> TN
+    T1 --> E0
+    T1 --> E1
+    E0 -->|siguiente| E1
+    E1 -->|sucesion| T2

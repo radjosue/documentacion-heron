@@ -1,0 +1,11 @@
+flowchart LR
+    T["Plantilla .docx<br/>(python-docx)"]
+    PY["Python<br/>(ReportLab / PyPDF2)"]
+    LO["LibreOffice subprocess<br/>docx to PDF"]
+    MU["PyMuPDF<br/>fusión / firma HMAC"]
+    PDF["PDF final<br/>(backend/media/)"]
+
+    T --> PY
+    PY --> LO
+    LO --> MU
+    MU --> PDF

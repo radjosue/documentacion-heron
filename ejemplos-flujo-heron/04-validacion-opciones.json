@@ -1,0 +1,111 @@
+{
+  "camposValidaciones": {
+    "reglasContratante": {
+      "==~tipoPersona": {
+        "respuesta": {
+          "etapa": "0.0",
+          "codigo": 400,
+          "mensaje": "Tipo de persona no válido."
+        },
+        "parametros": {
+          "valor": {
+            "formulario": "datosGenerales",
+            "valor": "tipoPersona"
+          }
+        },
+        "opciones": {
+          "fisica": {
+            "estatus": {
+              "valido": true,
+              "respuesta": {
+                "etapa": "0.0",
+                "codigo": 201,
+                "mensaje": "OK"
+              }
+            },
+            "camposObligatorios": {
+              "datosGenerales": {
+                "curp": {
+                  "respuesta": {
+                    "etapa": "0.0",
+                    "codigo": 400,
+                    "mensaje": "La CURP es obligatoria."
+                  }
+                }
+              }
+            },
+            "camposValidaciones": {
+              "reglasRFC": {
+                "regex~rfc": {
+                  "respuesta": {
+                    "etapa": "0.0",
+                    "codigo": 400,
+                    "mensaje": "RFC de persona física inválido."
+                  },
+                  "parametros": {
+                    "patron": {
+                      "formulario": null,
+                      "valor": "^[A-Z]{4}[0-9]{6}[A-Z0-9]{3}$"
+                    },
+                    "valor": {
+                      "formulario": "datosGenerales",
+                      "valor": "rfc"
+                    }
+                  },
+                  "opciones": {
+                    "*": {
+                      "estatus": {
+                        "valido": true,
+                        "respuesta": {
+                          "etapa": "0.0",
+                          "codigo": 201,
+                          "mensaje": "OK"
+                        }
+                      },
+                      "camposObligatorios": null,
+                      "camposValidaciones": null
+                    }
+                  },
+                  "parametrosDinamicos": null
+                }
+              }
+            }
+          },
+          "moral": {
+            "estatus": {
+              "valido": true,
+              "respuesta": {
+                "etapa": "0.0",
+                "codigo": 201,
+                "mensaje": "OK"
+              }
+            },
+            "camposObligatorios": {
+              "datosGenerales": {
+                "razonSocial": {
+                  "respuesta": {
+                    "etapa": "0.0",
+                    "codigo": 400,
+                    "mensaje": "La razón social es obligatoria."
+                  }
+                }
+              }
+            },
+            "camposValidaciones": null
+          },
+          "*": {
+            "estatus": {
+              "valido": false,
+              "respuesta": {
+                "etapa": "0.0",
+                "codigo": 400,
+                "mensaje": "Selecciona física o moral."
+              }
+            }
+          }
+        },
+        "parametrosDinamicos": null
+      }
+    }
+  }
+}

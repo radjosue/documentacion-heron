@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant U as Usuario
+    participant EX as server.js (Express)
+    participant DJ as Django
+
+    U->>EX: credenciales + reCAPTCHA
+    EX->>DJ: POST /api/hash_login/
+    DJ->>DJ: validar_recaptcha + authenticate + crear JWT
+    DJ-->>EX: token_drf + JWT (5 min)
+    Note over EX: token_drf → localStorage · JWT → memoria RAM
+
+    loop Cada request
+        EX->>EX: ¿JWT expira en menos de 2 min?
+        alt sí
+            EX->>DJ: POST /api/hash_refresh/ {token_drf}
+            DJ-->>EX: nuevo JWT (5 min)
+        end
+        EX->>DJ: request con JWT válido
+        DJ-->>U: response
+    end

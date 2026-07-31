@@ -1,0 +1,10 @@
+graph LR
+    BE["Backend<br/>Django / DRF"]
+
+    PG[("PostgreSQL<br/>ProcesosHeron · TareasHeron<br/>TramitesHeron · TrackingHeron<br/>FoliosHeron · Usuarios<br/>GestionAusencias")]
+    Mongo[("MongoDB<br/>FormulariosHeron<br/>DatosTareasHeron<br/>ConfigHeron")]
+    SQLSrv[("SQL Server<br/>MIDAS 1.0<br/>historial legado")]
+
+    BE -->|"Django ORM"| PG
+    BE -->|"Djongo / PyMongo"| Mongo
+    BE -->|"pyodbc — clase MidasAPI"| SQLSrv

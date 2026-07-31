@@ -1,0 +1,17 @@
+sequenceDiagram
+    actor U as Usuario
+    participant BE as Django / Heron
+    participant CR as ConfigHeron (cola)
+    participant RB as robot_subprocesos (cron)
+    participant MDB as MongoDB / PG
+
+    U->>BE: AccionesTramite → sucesion tipo "subproceso"
+    BE->>CR: Encola subproceso (parámetros zlib+base64)
+    BE-->>U: El folio padre queda en estado Detenido
+    Note over CR,RB: Ciclo cron ≤ 5 min
+    RB->>CR: Lee entradas pendientes
+    RB->>MDB: Crea folio hijo embebido
+    RB->>MDB: INSERT TrackingHeron (folio hijo, referencia al padre)
+    Note over MDB: El padre queda bloqueado hasta que el hijo complete
+    MDB-->>BE: El hijo completa — puede retornar datos al padre
+    BE->>MDB: El folio padre se reactiva con datos del hijo

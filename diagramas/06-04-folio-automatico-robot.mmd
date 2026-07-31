@@ -1,0 +1,8 @@
+flowchart TD
+    CRON["Cron Ubuntu · c/5 min"] --> RT["robot_tramites"]
+    RT --> QRY["Consulta condición operativa<br/>(PostgreSQL / MongoDB)"]
+    QRY --> FOLIO{"¿Ya existe folio<br/>activo para este caso?"}
+    FOLIO -->|No| NTR["NuevoTramite<br/>crea folio de forma programática"]
+    FOLIO -->|Sí| SKIP["Omite — ya en proceso"]
+    NTR --> TRK["INSERT TrackingHeron<br/>bandeja del área responsable"]
+    TRK --> NOT["Hermes notifica<br/>al responsable de área"]
