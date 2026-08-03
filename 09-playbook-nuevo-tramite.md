@@ -7,9 +7,9 @@ version: v2.0
 # Playbook de Implementación de Flujos de Trabajo en Héron
 ## Configuración de procesos, tareas, permisos y visibilidad operativa
 
-> **Cómo leer este documento.** El playbook explica **cada llave del JSON** de un flujo (para qué sirve y cómo funciona). Los ejemplos completos no van embebidos en el texto: se entregan como **archivos `.json` adjuntos** (carpeta `ejemplos-flujo-heron/`) para que puedas copiarlos y editarlos directamente. Cuando una sección describe una estructura, se indica el archivo adjunto que la contiene íntegra.
->
-> Para el contexto arquitectónico completo (vistas lógica, de desarrollo, de procesos y física) consulta la [Arquitectura 4+1](README.md); este playbook se enfoca en la implementación operativa de un flujo. En particular, el detalle de las fases del pipeline está en la [Vista de Desarrollo · pipeline](03-vista-desarrollo.md#pipeline) y la estructura de condiciones (if / elif / switch con su comparación en Python) en la [Vista de Desarrollo · árbol de condiciones](03-vista-desarrollo.md#condiciones).
+Este playbook explica cada llave del JSON de un flujo (para qué sirve y cómo funciona). Los ejemplos completos se entregan como archivos `.json` en la carpeta `ejemplos-flujo-heron/` para copiarlos y editarlos directamente; cuando una sección describe una estructura, se indica el archivo que la contiene íntegra.
+
+Para el contexto arquitectónico completo consulta la [Arquitectura 4+1](README.md); este playbook se enfoca en la implementación operativa de un flujo. El detalle de las fases del pipeline está en la [Vista de Desarrollo · pipeline](03-vista-desarrollo.md#pipeline) y la estructura de condiciones (if / elif / switch con su comparación en Python) en la [Vista de Desarrollo · árbol de condiciones](03-vista-desarrollo.md#condiciones).
 
 > **Recursos adjuntos de este playbook:**
 >
@@ -166,6 +166,10 @@ ProcesosHeron.objects.create(
 # procesoId se compone como "11-40-1.0"
 ```
 
+Los mismos campos se pueden capturar desde el panel de administración de Django (`/admin/Heron/procesosheron/add/`):
+
+![Alta de un proceso en el panel de administración de Django — formulario "Agregar Proceso" (Núm. Proceso, Versión, Área, Área Prefijo, Nombre, Descripción, Vigencia, SSLA)](imagenes/alta-proceso.png)
+
 > **Advertencia (afecta a todos los folios del proceso):** no elimines ni cambies la `vigencia` de un proceso con folios en curso. El versionamiento correcto (§6.3) es dar de alta la versión nueva, quitar acceso a la anterior y dejar que sus folios terminen.
 
 ### 6.2 Documento JSON del proceso (MongoDB)
@@ -243,6 +247,10 @@ TareasHeron.objects.create(numTarea=8, procesoId=proc, nombre="Completado",
 TareasHeron.objects.create(numTarea=9, procesoId=proc, nombre="Cancelado",
     autoriza="", rechaza="", ssla=0, tareaFinal=True)
 ```
+
+Cada tarea también puede darse de alta desde el panel de administración (`/admin/Heron/tareasheron/add/`), donde se ven los campos `Proceso Id`, `Nombre`, `Icono`, `SSLA`, `Tarea Final`, `Autoriza` y `Rechaza`:
+
+![Alta de una tarea en el panel de administración de Django — formulario "Agregar Tarea" (Proceso Id, Nombre, Descripción, Icono, SSLA, Tarea Final, Autoriza, Rechaza)](imagenes/alta-tarea.png)
 
 ### 7.2 Etapas: el mini-grafo de una tarea
 

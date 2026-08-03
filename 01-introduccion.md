@@ -27,7 +27,7 @@ El contenido está organizado para acompañar la forma real en que se comprende 
 
 La documentación está pensada para desarrolladores y arquitectos que van a mantener o evolucionar la plataforma. El objetivo es dejar una base técnica clara para operar Héron con menor dependencia del conocimiento informal, reduciendo la curva de aprendizaje de quienes se incorporan al equipo.
 
-La guía para configurar un trámite específico —el [Playbook: Nuevo Trámite](09-playbook-nuevo-tramite.md)— acompaña a este documento (capítulo 9): es un manual operativo paso a paso. Este texto se concentra en la arquitectura: qué hace cada componente, cómo se relacionan y por qué están construidos de esa forma.
+La guía para configurar un trámite específico —el [Playbook: Nuevo Trámite](08-playbook-nuevo-tramite.md)— acompaña a este documento (capítulo 8): es un manual operativo paso a paso. Este texto se concentra en la arquitectura: qué hace cada componente, cómo se relacionan y por qué están construidos de esa forma.
 
 ---
 

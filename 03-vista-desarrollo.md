@@ -4,7 +4,7 @@ Esta vista está dirigida a quien va a leer, mantener o extender el código y la
 
 El recorrido sigue el orden natural de aprendizaje: primero cómo está estructurado el frontend y cómo se comunica con el backend, después la anatomía del JSON, luego el pipeline de ejecución y, por último, el detalle del sucesor y de las APIs.
 
-> Para el procedimiento operativo —cómo dar de alta un proceso, sus tareas, permisos y visibilidad paso a paso— consulta el [Playbook: Nuevo Trámite](09-playbook-nuevo-tramite.md). Esta vista explica *cómo funciona*; el playbook explica *cómo hacerlo*.
+> Para el procedimiento operativo —cómo dar de alta un proceso, sus tareas, permisos y visibilidad paso a paso— consulta el [Playbook: Nuevo Trámite](08-playbook-nuevo-tramite.md). Esta vista explica *cómo funciona*; el playbook explica *cómo hacerlo*.
 
 ## 3.1 Organización del código
 
