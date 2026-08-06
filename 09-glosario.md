@@ -49,7 +49,7 @@ Vocabulario que aparece al implementar un flujo en el JSON del proceso.
 | **vigencia** | Flag de `ProcesosHeron` que controla si el proceso está activo (`"0"` = inactivo, no aparece) |
 | **ssla** | SLA en minutos, de un proceso o de una tarea |
 | **tareaFinal** | Marca de nodo terminal; el estatus de cierre lo fija la llave `estatus` de la `sucesion`, no `tareaFinal` por sí solo |
-| **repetir / proceso / subproceso** | Acciones especiales de enlace: repetir la tarea (bucle), lanzar un folio hijo independiente, o embeber un desvío en el mismo folio |
+| **repetir / proceso / subproceso** | Acciones especiales de enlace; cada una se configura en un bloque dedicado de `backend[accionId]` (`repetidor`, `nuevoProceso`, `subProceso`), no como entrada de `autoriza`/`rechaza`. `repetir` reasigna el folio dentro de la misma tarea; `proceso` lanza un folio hijo independiente; `subproceso` embebe un desvío en el mismo folio |
 | **ConfigHeron "Accesos"** | Documento que concede a un tipo de usuario/área la visibilidad para **iniciar** un proceso en "Nuevo Trámite" |
 | **VAR_DEL** | Valor centinela que, asignado a una llave, hace que el core la **borre** de `datosTarea` |
 | **código 201 / 400** | Únicos códigos que interpreta la validación: `201` éxito (avanza, no muestra mensaje); `400` error (detiene y muestra el mensaje) |

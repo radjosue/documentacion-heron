@@ -456,15 +456,64 @@ El campo `usuario` acepta valores especiales que el motor resuelve en tiempo de 
 
 Después de resolver el usuario, el motor consulta `GestionAusencias`: si el asignado tiene una ausencia activa, el folio se redirige automáticamente a su `reemplazoId`.
 
-### Acciones especiales de sucesión
+### Acciones especiales: repetir, proceso y subproceso
 
-Además de un `tareaId`, las listas `autoriza`/`rechaza` pueden contener acciones especiales que ejecutan robots dedicados (ver [Vista de Procesos](04-vista-procesos.md#robots)):
+Además de enrutar a otra tarea, una acción puede disparar tres comportamientos especiales. **No se declaran con `sucesor: "repetir"` ni como entradas de las listas `autoriza`/`rechaza`**: cada uno vive en un **bloque dedicado** dentro de `backend[accionId]`, y el motor lo ejecuta solo si ese bloque existe. Las tres pueden coexistir en la misma acción y se resuelven en `AccionesTramite` alrededor de `sucesion`.
 
-| Acción | Ejecutor | Efecto |
-|---|---|---|
-| `repetir` | `repetirAPI` | Reingresa a la tarea actual (bucle dentro de la misma tarea) |
-| `proceso` | `procesoAPI` | Genera un proceso independiente (folio nuevo) que corre en paralelo |
-| `subProceso` | `subProcesoAPI` | Genera un subproceso embebido; el folio padre queda en espera hasta que termina |
+| Acción | Bloque JSON (dónde se configura) | Ejecutor | Efecto |
+|---|---|---|---|
+| `repetir` | `backend[accionId].repetidor` | `repetirAPI.obtenerRepeticion` | Reasigna el folio dentro de la **misma** tarea (bucle de reasignación) |
+| `proceso` | `backend[accionId].nuevoProceso[etapa]` | `procesoAPI` | Lanza un folio hijo independiente que corre en paralelo |
+| `subproceso` | `backend[accionId].subProceso` | `subProcesoAPI` | Embebe un desvío en el mismo folio; el padre queda en espera hasta que termina |
+
+#### Cómo se configura `repetir`
+
+`repetir` se resuelve **después** de `sucesion` (el motor llama a `obtenerRepeticion` justo después de `obtenerSucesor`). No cambia la tarea física ni la etapa: reajusta únicamente `(usuario, bandeja, estatus)` del folio, dejándolo en la tarea que ya resolvió `sucesion`. Es el mecanismo de las **matrices de autorización**, donde el mismo nodo se repite escalando de un autorizador al siguiente hasta alcanzar el nivel requerido.
+
+Se declara en `backend[accionId].repetidor`, con la misma forma recursiva que `sucesion` pero usando la llave `validacionRepeticion` en lugar de `validacionSucesion`:
+
+```json
+{
+  "backend": {
+    "Autorizar": {
+      "sucesion": { "sucesor": "3", "validacionSucesion": null },
+      "repetidor": {
+        "sucesor": "3",
+        "validacionRepeticion": {
+          "validacion": ">",
+          "sucesor": "3",
+          "opciones": {
+            "*": {
+              "sucesor": "3",
+              "typeSucesor": "Autoriza",
+              "indexSucesor": 0,
+              "usuario": "?usuarioDefault",
+              "bandeja": 11,
+              "estatus": 1,
+              "etapaId": "0.0",
+              "validacionRepeticion": null
+            }
+          },
+          "parametros": { "opcion": { "formulario": null, "valor": "100000" } },
+          "parametrosDinamicos": { "valor": { "formulario": "dictamen", "valor": "monto" } }
+        }
+      }
+    }
+  }
+}
+```
+
+Si el `monto` del dictamen supera `100000`, la condición `>` se cumple y el folio se **reasigna al autorizante inmediato** dentro de la misma tarea de Autorización; si no se cumple, no hay repetición y el folio continúa con lo que resolvió `sucesion`. Llaves del nodo de repetición (idénticas a las de una opción de `sucesion`):
+
+| Llave | Para qué sirve |
+|---|---|
+| `sucesor` | Sucesor base del bloque (fallback si no ramifica) |
+| `validacionRepeticion` | Árbol de condiciones (mismo mecanismo que `validacionSucesion`); `null` = sin ramificar |
+| `usuario` | Nuevo responsable. `?usuarioDefault` lo resuelve `repetirAPI` a `infoTramite.usuarioAutorizante` (el jefe inmediato) |
+| `bandeja` / `estatus` | Nueva bandeja y estatus del folio reasignado |
+| `typeSucesor` / `indexSucesor` | Igual que en `sucesion`: de qué lista (`autoriza`/`rechaza`) y en qué posición se toma la referencia |
+
+La repetición se detiene cuando la condición de `validacionRepeticion` deja de cumplirse. Las variantes `proceso` y `subproceso` se documentan en la [Vista de Procesos](04-vista-procesos.md#robots).
 
 <a id="condiciones"></a>
 
