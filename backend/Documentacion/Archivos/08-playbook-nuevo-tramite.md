@@ -7,22 +7,22 @@ version: v2.0
 # Playbook de Implementación de Flujos de Trabajo en Héron
 ## Configuración de procesos, tareas, permisos y visibilidad operativa
 
-Este playbook explica cada llave del JSON de un flujo (para qué sirve y cómo funciona). Los ejemplos completos se entregan como archivos `.json` en la carpeta `ejemplos-flujo-heron/` para copiarlos y editarlos directamente; cuando una sección describe una estructura, se indica el archivo que la contiene íntegra.
+Este playbook explica cada llave del JSON de un flujo (para qué sirve y cómo funciona). Los ejemplos completos se entregan como archivos `.json` en la carpeta `../EjemplosFlujo/` para copiarlos y editarlos directamente; cuando una sección describe una estructura, se indica el archivo que la contiene íntegra.
 
-Para el contexto arquitectónico completo consulta la [Arquitectura 4+1](README.md); este playbook se enfoca en la implementación operativa de un flujo. El detalle de las fases del pipeline está en la [Vista de Desarrollo · pipeline](03-vista-desarrollo.md#pipeline) y la estructura de condiciones (if / elif / switch con su comparación en Python) en la [Vista de Desarrollo · árbol de condiciones](03-vista-desarrollo.md#condiciones).
+Para el contexto arquitectónico completo consulta la [Arquitectura 4+1](../../../README.md); este playbook se enfoca en la implementación operativa de un flujo. El detalle de las fases del pipeline está en la [Vista de Desarrollo · pipeline](03-vista-desarrollo.md#pipeline) y la estructura de condiciones (if / elif / switch con su comparación en Python) en la [Vista de Desarrollo · árbol de condiciones](03-vista-desarrollo.md#condiciones).
 
 > **Recursos adjuntos de este playbook:**
 >
 > | Adjunto | Contenido |
 > |---|---|
-> | `ejemplos-flujo-heron/01-proceso-revision-documental.json` | Documento completo de la Tarea 1 (Captura): `frontend` + `backend` (validacion, actualizacion, sucesion) |
-> | `ejemplos-flujo-heron/02-tarea-autorizacion-sucesion.json` | Tarea de Autorización: bifurcación autoriza/rechaza y cierre del trámite |
-> | `ejemplos-flujo-heron/03-configheron-accesos.json` | Documento `ConfigHeron "Accesos"` que da visibilidad al proceso |
-> | `ejemplos-flujo-heron/04-validacion-opciones.json` | Árbol `camposValidaciones` con `operador~alias`, `opciones` y comodín `*` |
-> | `ejemplos-flujo-heron/05-formulario-fields-inputs.json` | Formulario completo con `fields`: filas, inputs de texto/select/fecha/checkbox, `modifier`/`config`, `query` |
-> | `ejemplos-flujo-heron/06-etapa-forms-typeform.json` | Lista `forms` de una etapa combinando varios `typeForm` (Formulario, Domicilio, Select, Lista, Visualizador, Tabla) |
-> | `heron-inventario-funciones-apis.xlsx` | Inventario de las 1,156 funciones de backend invocables por el JSON, una hoja por catálogo/API |
-> | `heron-inventario-componentes-frontend.xlsx` | Inventario de los componentes frontend: `typeForm` montables, tipos de input, llaves/variantes de input y componentes generales |
+> | `../EjemplosFlujo/01-proceso-revision-documental.json` | Documento completo de la Tarea 1 (Captura): `frontend` + `backend` (validacion, actualizacion, sucesion) |
+> | `../EjemplosFlujo/02-tarea-autorizacion-sucesion.json` | Tarea de Autorización: bifurcación autoriza/rechaza y cierre del trámite |
+> | `../EjemplosFlujo/03-configheron-accesos.json` | Documento `ConfigHeron "Accesos"` que da visibilidad al proceso |
+> | `../EjemplosFlujo/04-validacion-opciones.json` | Árbol `camposValidaciones` con `operador~alias`, `opciones` y comodín `*` |
+> | `../EjemplosFlujo/05-formulario-fields-inputs.json` | Formulario completo con `fields`: filas, inputs de texto/select/fecha/checkbox, `modifier`/`config`, `query` |
+> | `../EjemplosFlujo/06-etapa-forms-typeform.json` | Lista `forms` de una etapa combinando varios `typeForm` (Formulario, Domicilio, Select, Lista, Visualizador, Tabla) |
+> | `../Inventarios/heron-inventario-funciones-apis.xlsx` | Inventario de las 1,156 funciones de backend invocables por el JSON, una hoja por catálogo/API |
+> | `../Inventarios/heron-inventario-componentes-frontend.xlsx` | Inventario de los componentes frontend: `typeForm` montables, tipos de input, llaves/variantes de input y componentes generales |
 
 ---
 
@@ -114,8 +114,8 @@ A lo largo del playbook usaremos un flujo realista y autónomo, no atado a ning�
 
 Descomposición:
 
-<!-- diagrama: diagramas/09-01-descomposicion-ejemplo.mmd -->
-![Descomposición del requerimiento en proceso, tareas y áreas](diagramas/09-01-descomposicion-ejemplo.svg)
+<!-- diagrama: ../Diagramas/08-01-descomposicion-ejemplo.mmd -->
+![Descomposición del requerimiento en proceso, tareas y áreas](../Diagramas/08-01-descomposicion-ejemplo.svg)
 
 | Tarea | `tareaId` | Área / bandeja | Rol que la atiende |
 |---|---|---|---|
@@ -168,7 +168,7 @@ ProcesosHeron.objects.create(
 
 Los mismos campos se pueden capturar desde el panel de administración de Django (`/admin/Heron/procesosheron/add/`):
 
-![Alta de un proceso en el panel de administración de Django — formulario "Agregar Proceso" (Núm. Proceso, Versión, Área, Área Prefijo, Nombre, Descripción, Vigencia, SSLA)](imagenes/alta-proceso.png)
+![Alta de un proceso en el panel de administración de Django — formulario "Agregar Proceso" (Núm. Proceso, Versión, Área, Área Prefijo, Nombre, Descripción, Vigencia, SSLA)](../Imagenes/alta-proceso.png)
 
 > **Advertencia (afecta a todos los folios del proceso):** no elimines ni cambies la `vigencia` de un proceso con folios en curso. El versionamiento correcto (§6.3) es dar de alta la versión nueva, quitar acceso a la anterior y dejar que sus folios terminen.
 
@@ -250,7 +250,7 @@ TareasHeron.objects.create(numTarea=9, procesoId=proc, nombre="Cancelado",
 
 Cada tarea también puede darse de alta desde el panel de administración (`/admin/Heron/tareasheron/add/`), donde se ven los campos `Proceso Id`, `Nombre`, `Icono`, `SSLA`, `Tarea Final`, `Autoriza` y `Rechaza`:
 
-![Alta de una tarea en el panel de administración de Django — formulario "Agregar Tarea" (Proceso Id, Nombre, Descripción, Icono, SSLA, Tarea Final, Autoriza, Rechaza)](imagenes/alta-tarea.png)
+![Alta de una tarea en el panel de administración de Django — formulario "Agregar Tarea" (Proceso Id, Nombre, Descripción, Icono, SSLA, Tarea Final, Autoriza, Rechaza)](../Imagenes/alta-tarea.png)
 
 ### 7.2 Etapas: el mini-grafo de una tarea
 
@@ -339,7 +339,7 @@ El layout de las filas lo controla `propsForm.variant` del **formulario** (no co
 
 > Los datos que una consulta devuelve solo se pintan si sus llaves **coinciden literal** con los `ref` de los inputs: el frontend descarta lo que no existe en sus campos, sin error. Es la contraparte frontend de la regla de coincidencia de `refForm`.
 
-**Tipos de formulario (`typeForm`, PascalCase).** El contenedor del trámite resuelve el `typeForm` con un `switch` case-sensitive: si el valor no coincide con un case, el form **no se pinta ni se lee**, sin error visible. El inventario completo con las props de cada uno está en el adjunto `heron-inventario-componentes-frontend.xlsx` (hoja *Componentes typeForm*); el adjunto `06-etapa-forms-typeform.json` muestra una etapa combinando varios. Guía de selección:
+**Tipos de formulario (`typeForm`, PascalCase).** El contenedor del trámite resuelve el `typeForm` con un `switch` case-sensitive: si el valor no coincide con un case, el form **no se pinta ni se lee**, sin error visible. El inventario completo con las props de cada uno está en el adjunto `../Inventarios/heron-inventario-componentes-frontend.xlsx` (hoja *Componentes typeForm*); el adjunto `06-etapa-forms-typeform.json` muestra una etapa combinando varios. Guía de selección:
 
 | `typeForm` | Cuándo elegirlo | `url` | Notas |
 |---|---|---|---|
@@ -402,8 +402,8 @@ Esta capa decide si el usuario **puede siquiera** ejecutar la acción (crear fol
 
 La segunda capa vive en documentos de `ConfigHeron` (modelo minimalista: `nombreId` + `config` JSON, `models.py:227-241`). Casi todos resuelven la configuración con una **cascada de especificidad creciente**, donde **gana la coincidencia más específica que exista**:
 
-<!-- diagrama: diagramas/09-02-cascada-especificidad.mmd -->
-![Cascada de especificidad de permisos y configuración](diagramas/09-02-cascada-especificidad.svg)
+<!-- diagrama: ../Diagramas/08-02-cascada-especificidad.mmd -->
+![Cascada de especificidad de permisos y configuración](../Diagramas/08-02-cascada-especificidad.svg)
 
 Este patrón `* → rol → área → agrupador → usuario` se repite en `obtenerConfigAccesos`, `obtenerBarraNavegacion`, `obtenerConfiguracionPantalla`, `obtenerConfigBusqueda`, etc. (`managers.py:2484-3649`). Es el mecanismo central de personalización por rol/área/usuario en todo Héron. En términos de negocio: **RFC específico → Rol → Área → Default (`*`)**.
 
@@ -728,7 +728,7 @@ El mismo árbol gobierna la clave `sucesion` (dentro de `validacionSucesion`, la
 Cuando una configuración no se comporta como esperas, el flujo de investigación es:
 
 1. **Ubica la fase.** Cada fase tiene su archivo en `backend/apis/Heron/herramientas/`: `validacionAPI.py`, `actualizacionAPI.py`, `consultaAPI.py`, `sucesorAPI.py`, etc. El motor indexa como `backend[accionId][fase][etapa]` (excepto `sucesion`).
-2. **Encuentra el catálogo de la fase.** Cada fase resuelve las funciones que el JSON invoca por nombre contra un catálogo (lista cerrada de operaciones). **El inventario completo de las 1,156 funciones está en el adjunto `heron-inventario-funciones-apis.xlsx`** (una hoja por catálogo, con Función / Descripción / Módulo). Úsalo para confirmar que una función existe y revisar qué hace antes de invocarla:
+2. **Encuentra el catálogo de la fase.** Cada fase resuelve las funciones que el JSON invoca por nombre contra un catálogo (lista cerrada de operaciones). **El inventario completo de las 1,156 funciones está en el adjunto `../Inventarios/heron-inventario-funciones-apis.xlsx`** (una hoja por catálogo, con Función / Descripción / Módulo). Úsalo para confirmar que una función existe y revisar qué hace antes de invocarla:
 
    | Catálogo | Archivo | Funciones | Ejemplos |
    |---|---|---|---|
@@ -744,7 +744,7 @@ Cuando una configuración no se comporta como esperas, el flujo de investigació
 
    Las funciones de negocio de un ramo delegan a `apis/Heron/areas/` (p. ej. `apiEmision`, `apiSiniestros`, `apiSuscripcion`); la columna **Módulo** del Excel indica a qué área pertenece cada una. Para **agregar una capacidad nueva**, primero debe existir su entrada en el catálogo de su fase.
 
-   Para el lado **frontend**, el equivalente es el adjunto `heron-inventario-componentes-frontend.xlsx`: los `typeForm` montables con sus props, los tipos de input y las llaves de `modifier`/`config`. Si un componente no renderiza, verifica primero que el `typeForm` exista en el switch de `Tramite.js` (case-sensitive) y que las llaves de sus opciones coincidan literal.
+   Para el lado **frontend**, el equivalente es el adjunto `../Inventarios/heron-inventario-componentes-frontend.xlsx`: los `typeForm` montables con sus props, los tipos de input y las llaves de `modifier`/`config`. Si un componente no renderiza, verifica primero que el `typeForm` exista en el switch de `Tramite.js` (case-sensitive) y que las llaves de sus opciones coincidan literal.
 3. **Sigue el folio en el tracking.** Busca el proceso en `procesos`, obtén la versión desde un folio en `TrackingHeron` (`rastreos`), filtra `tareas` por `procesoId`, y sigue las transiciones. Los registros marcados con "ojito" indican cambio de nodo/estatus (nuevo `datosTarea`). El registro con `trackingFinal=True` es el estado activo, y su estatus decide qué formulario renderiza el back.
 4. **Confirma dónde impacta la llave.** Búscala literal en el repositorio; identifica si vive en frontend (`Tramite.js`, variantes `frontend*`), en backend (`herramientas/`), o en `ConfigHeron` (permisos/menú/visibilidad).
 5. **Depura en local.** En local el error indica la llave exacta ("hay un error en la llave de obtención"). En servidor, la salida de depuración se registra en `configuracion > debugs`.
@@ -901,11 +901,11 @@ El motor expone cuatro endpoints principales (URLs con hash MD5) que todas las v
 
 ### Inventarios (Excel adjuntos)
 
-**`heron-inventario-funciones-apis.xlsx`** — las 1,156 funciones de **backend** que el JSON puede invocar por nombre, una hoja por catálogo (Validaciones 275, Actualizaciones 434, Acciones 156, Obtenciones 132, Herramientas 103, Consultas 20, Filtros 8, Ensambles 6, Depuraciones 4, Especiales 18). Cada hoja lista **Función / Descripción / Módulo**. Es el primer lugar a consultar para confirmar que una operación existe y entender qué hace.
+**`../Inventarios/heron-inventario-funciones-apis.xlsx`** — las 1,156 funciones de **backend** que el JSON puede invocar por nombre, una hoja por catálogo (Validaciones 275, Actualizaciones 434, Acciones 156, Obtenciones 132, Herramientas 103, Consultas 20, Filtros 8, Ensambles 6, Depuraciones 4, Especiales 18). Cada hoja lista **Función / Descripción / Módulo**. Es el primer lugar a consultar para confirmar que una operación existe y entender qué hace.
 
-**`heron-inventario-componentes-frontend.xlsx`** — los componentes de **frontend** configurables desde el JSON: los `typeForm` montables con sus props (26), los tipos de input disponibles (95), las llaves y variantes de un input (24) y los componentes generales de la librería (68). Úsalo para elegir el componente correcto al diseñar una etapa y revisar sus props cuando algo no se pinta.
+**`../Inventarios/heron-inventario-componentes-frontend.xlsx`** — los componentes de **frontend** configurables desde el JSON: los `typeForm` montables con sus props (26), los tipos de input disponibles (95), las llaves y variantes de un input (24) y los componentes generales de la librería (68). Úsalo para elegir el componente correcto al diseñar una etapa y revisar sus props cuando algo no se pinta.
 
-### Ejemplos JSON adjuntos (carpeta `ejemplos-flujo-heron/`)
+### Ejemplos JSON adjuntos (carpeta `../EjemplosFlujo/`)
 
 | Archivo | Contenido |
 |---|---|
@@ -920,7 +920,7 @@ El motor expone cuatro endpoints principales (URLs con hash MD5) que todas las v
 
 | Archivo | Contenido |
 |---|---|
-| [Arquitectura 4+1](README.md) | Vistas lógica/desarrollo/procesos/física; base conceptual |
+| [Arquitectura 4+1](../../../README.md) | Vistas lógica/desarrollo/procesos/física; base conceptual |
 | `backend/apis/Heron/apis/apiGeneral.py` | Orquestación: pipeline (`APIAccionesEtapa`/`APIAccionesTramite`), armado de pantalla, barra de navegación, áreas/trámites |
 | `backend/apis/Heron/herramientas/` | Un ejecutor por fase (`validacionAPI.py`, `actualizacionAPI.py`, `sucesorAPI.py`, …) y sus catálogos |
 | `backend/apis/Heron/models.py` | `ProcesosHeron`, `TareasHeron`, `TrackingHeron`, `ConfigHeron`, `FormulariosHeron` |
@@ -934,8 +934,8 @@ El motor expone cuatro endpoints principales (URLs con hash MD5) que todas las v
 <!-- nav -->
 <table width="100%">
 <tr>
-<td align="left"><a href="08-glosario.md">← Anterior: Glosario</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
-<td align="right">&nbsp;</td>
+<td align="left"><a href="07-decisiones.md">← Anterior: Decisiones</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
+<td align="right"><a href="09-glosario.md">Siguiente: Glosario →</a></td>
 </tr>
 </table>

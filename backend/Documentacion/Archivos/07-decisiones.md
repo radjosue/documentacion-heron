@@ -21,7 +21,7 @@ Este apartado reúne las decisiones de diseño que más condicionan la operació
 <table width="100%">
 <tr>
 <td align="left"><a href="06-escenarios.md">← Anterior: Escenarios</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="08-playbook-nuevo-tramite.md">Siguiente: Playbook: Nuevo Trámite →</a></td>
 </tr>
 </table>

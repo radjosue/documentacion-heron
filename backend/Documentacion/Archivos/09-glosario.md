@@ -60,7 +60,7 @@ Vocabulario que aparece al implementar un flujo en el JSON del proceso.
 <table width="100%">
 <tr>
 <td align="left"><a href="08-playbook-nuevo-tramite.md">← Anterior: Playbook: Nuevo Trámite</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right">&nbsp;</td>
 </tr>
 </table>

@@ -1,0 +1,189 @@
+{
+  "titulo": "Diagramas — Arquitectura 4+1 MIDAS / Héron",
+  "descripcion": "Índice de diagramas. Cada uno tiene su imagen renderizada (.svg, la que referencian los documentos) y su fuente Mermaid editable (.mmd). Regenerar un SVG: mmdc -i <archivo>.mmd -o <archivo>.svg -b white",
+  "nomenclatura": "XX-YY-descripcion: XX = número de la vista de origen, YY = orden dentro de la vista",
+  "diagramas": [
+    {
+      "id": "02-01-modelo-proceso-tarea-etapa",
+      "descripcion": "Modelo conceptual Proceso / Tarea / Etapa",
+      "svg": "02-01-modelo-proceso-tarea-etapa.svg",
+      "mmd": "02-01-modelo-proceso-tarea-etapa.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-02-tracking-folio",
+      "descripcion": "Evolución de los registros de TrackingHeron de un folio",
+      "svg": "02-02-tracking-folio.svg",
+      "mmd": "02-02-tracking-folio.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-03-sucesor-autoriza-rechaza",
+      "descripcion": "Decisión del sucesor: Autoriza / Rechaza",
+      "svg": "02-03-sucesor-autoriza-rechaza.svg",
+      "mmd": "02-03-sucesor-autoriza-rechaza.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-04-cambio-bandejas",
+      "descripcion": "Recorrido de un folio entre bandejas",
+      "svg": "02-04-cambio-bandejas.svg",
+      "mmd": "02-04-cambio-bandejas.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-05-ciclo-vida-folio",
+      "descripcion": "Ciclo de vida de un folio",
+      "svg": "02-05-ciclo-vida-folio.svg",
+      "mmd": "02-05-ciclo-vida-folio.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-06-modulos-sistema",
+      "descripcion": "Módulos del sistema y Héron como orquestador",
+      "svg": "02-06-modulos-sistema.svg",
+      "mmd": "02-06-modulos-sistema.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "02-07-modelo-datos",
+      "descripcion": "Modelo de datos: PostgreSQL, MongoDB y SQL Server",
+      "svg": "02-07-modelo-datos.svg",
+      "mmd": "02-07-modelo-datos.mmd",
+      "vista": "../Archivos/02-vista-logica.md"
+    },
+    {
+      "id": "03-01-estructura-frontend",
+      "descripcion": "Capas del frontend",
+      "svg": "03-01-estructura-frontend.svg",
+      "mmd": "03-01-estructura-frontend.mmd",
+      "vista": "../Archivos/03-vista-desarrollo.md"
+    },
+    {
+      "id": "03-02-flujo-dependencias-pantalla",
+      "descripcion": "Flujo de dependencias de una pantalla de Héron",
+      "svg": "03-02-flujo-dependencias-pantalla.svg",
+      "mmd": "03-02-flujo-dependencias-pantalla.mmd",
+      "vista": "../Archivos/03-vista-desarrollo.md"
+    },
+    {
+      "id": "03-03-pipeline-consolidado",
+      "descripcion": "Grafo consolidado del pipeline de fases",
+      "svg": "03-03-pipeline-consolidado.svg",
+      "mmd": "03-03-pipeline-consolidado.mmd",
+      "vista": "../Archivos/03-vista-desarrollo.md"
+    },
+    {
+      "id": "03-04-arbol-condiciones",
+      "descripcion": "Evaluación del árbol de condiciones (if / elif / switch)",
+      "svg": "03-04-arbol-condiciones.svg",
+      "mmd": "03-04-arbol-condiciones.mmd",
+      "vista": "../Archivos/03-vista-desarrollo.md"
+    },
+    {
+      "id": "04-01-procesos-runtime",
+      "descripcion": "Procesos en tiempo de ejecución",
+      "svg": "04-01-procesos-runtime.svg",
+      "mmd": "04-01-procesos-runtime.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "04-02-workers-gunicorn",
+      "descripcion": "Workers de Gunicorn y proceso de Next.js",
+      "svg": "04-02-workers-gunicorn.svg",
+      "mmd": "04-02-workers-gunicorn.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "04-03-autenticacion-jwt",
+      "descripcion": "Autenticación y refresco de JWT",
+      "svg": "04-03-autenticacion-jwt.svg",
+      "mmd": "04-03-autenticacion-jwt.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "04-04-ciclo-vida-tramite",
+      "descripcion": "Ciclo de vida de un trámite",
+      "svg": "04-04-ciclo-vida-tramite.svg",
+      "mmd": "04-04-ciclo-vida-tramite.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "04-05-proceso-paralelo",
+      "descripcion": "Proceso paralelo independiente",
+      "svg": "04-05-proceso-paralelo.svg",
+      "mmd": "04-05-proceso-paralelo.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "04-06-subproceso-embebido",
+      "descripcion": "Subproceso embebido con folio en espera",
+      "svg": "04-06-subproceso-embebido.svg",
+      "mmd": "04-06-subproceso-embebido.mmd",
+      "vista": "../Archivos/04-vista-procesos.md"
+    },
+    {
+      "id": "05-01-topologia-despliegue",
+      "descripcion": "Topología de despliegue en AWS EC2",
+      "svg": "05-01-topologia-despliegue.svg",
+      "mmd": "05-01-topologia-despliegue.mmd",
+      "vista": "../Archivos/05-vista-fisica.md"
+    },
+    {
+      "id": "05-02-generacion-documentos",
+      "descripcion": "Cadena de generación de documentos",
+      "svg": "05-02-generacion-documentos.svg",
+      "mmd": "05-02-generacion-documentos.mmd",
+      "vista": "../Archivos/05-vista-fisica.md"
+    },
+    {
+      "id": "05-03-integraciones-externas",
+      "descripcion": "Integraciones externas del backend",
+      "svg": "05-03-integraciones-externas.svg",
+      "mmd": "05-03-integraciones-externas.mmd",
+      "vista": "../Archivos/05-vista-fisica.md"
+    },
+    {
+      "id": "06-01-avance-inter-tarea",
+      "descripcion": "Escenario 1: avance inter-tarea y cambio de bandeja",
+      "svg": "06-01-avance-inter-tarea.svg",
+      "mmd": "06-01-avance-inter-tarea.mmd",
+      "vista": "../Archivos/06-escenarios.md"
+    },
+    {
+      "id": "06-02-proceso-paralelo",
+      "descripcion": "Escenario 3: proceso paralelo independiente",
+      "svg": "06-02-proceso-paralelo.svg",
+      "mmd": "06-02-proceso-paralelo.mmd",
+      "vista": "../Archivos/06-escenarios.md"
+    },
+    {
+      "id": "06-03-subproceso-embebido",
+      "descripcion": "Escenario 4: subproceso embebido",
+      "svg": "06-03-subproceso-embebido.svg",
+      "mmd": "06-03-subproceso-embebido.mmd",
+      "vista": "../Archivos/06-escenarios.md"
+    },
+    {
+      "id": "06-04-folio-automatico-robot",
+      "descripcion": "Escenario 5: folio generado por robot",
+      "svg": "06-04-folio-automatico-robot.svg",
+      "mmd": "06-04-folio-automatico-robot.mmd",
+      "vista": "../Archivos/06-escenarios.md"
+    },
+    {
+      "id": "08-01-descomposicion-ejemplo",
+      "descripcion": "Descomposición del requerimiento en proceso, tareas y áreas",
+      "svg": "08-01-descomposicion-ejemplo.svg",
+      "mmd": "08-01-descomposicion-ejemplo.mmd",
+      "vista": "../Archivos/08-playbook-nuevo-tramite.md"
+    },
+    {
+      "id": "08-02-cascada-especificidad",
+      "descripcion": "Cascada de especificidad de permisos y configuración",
+      "svg": "08-02-cascada-especificidad.svg",
+      "mmd": "08-02-cascada-especificidad.mmd",
+      "vista": "../Archivos/08-playbook-nuevo-tramite.md"
+    }
+  ]
+}

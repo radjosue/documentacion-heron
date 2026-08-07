@@ -10,8 +10,8 @@ Héron orquesta todos los trámites operativos de la aseguradora. El modelo conc
 - **Tarea**: nodo del grafo del proceso, asignado a un área/departamento con un SLA en minutos. Puede presentar nombres distintos sin duplicarse en el grafo: si la fase `actualizacion` escribe la llave `aliasTramite` en `datosTarea`, el core la detecta y la usa como nombre visual en la interfaz. Por ejemplo, el área de Siniestros reutiliza un único nodo de evaluación que aparece como "Evaluación Legal", "Evaluación Cobranza" o "Evaluación Enlace" según el estado del trámite.
 - **Etapa**: pantalla individual dentro de una tarea. Una tarea puede tener múltiples etapas (pantallas) que forman un mini-grafo propio de navegación, enfocado en cómo se le presenta la información al usuario.
 
-<!-- diagrama: diagramas/02-01-modelo-proceso-tarea-etapa.mmd -->
-![Modelo conceptual Proceso / Tarea / Etapa](diagramas/02-01-modelo-proceso-tarea-etapa.svg)
+<!-- diagrama: ../Diagramas/02-01-modelo-proceso-tarea-etapa.mmd -->
+![Modelo conceptual Proceso / Tarea / Etapa](../Diagramas/02-01-modelo-proceso-tarea-etapa.svg)
 
 Cada vez que un usuario avanza en un trámite se generan dos registros complementarios:
 
@@ -32,8 +32,8 @@ Los identificadores siguen un formato jerárquico composicional, definido en `mo
 
 Cada avance genera un nuevo registro en `TrackingHeron` con un `numTracking` consecutivo. El registro anterior pasa a `trackingFinal = False` y solo el último conserva `trackingFinal = True`, que representa el estado activo del folio. El campo `grupoTarea` agrupa los registros que corresponden a la permanencia en una misma tarea.
 
-<!-- diagrama: diagramas/02-02-tracking-folio.mmd -->
-![Evolución de los registros de TrackingHeron de un folio](diagramas/02-02-tracking-folio.svg)
+<!-- diagrama: ../Diagramas/02-02-tracking-folio.mmd -->
+![Evolución de los registros de TrackingHeron de un folio](../Diagramas/02-02-tracking-folio.svg)
 
 ### Cómo se mueve el grafo: Autoriza, Rechaza y el sucesor
 
@@ -48,20 +48,20 @@ Cada tarea declara en `TareasHeron` dos listas de tareas sucesoras posibles, sep
 
 La clave `sucesion` en el JSON del proceso es la que decide, en cada avance, cuál de esas rutas se toma. Evalúa condiciones sobre los datos del trámite y resuelve tres cosas: a qué **tarea** se dirige el folio (eligiendo de `autoriza` o `rechaza` según el resultado), a qué **usuario** se asigna y en qué **bandeja** queda.
 
-<!-- diagrama: diagramas/02-03-sucesor-autoriza-rechaza.mmd -->
-![Decisión del sucesor: Autoriza / Rechaza](diagramas/02-03-sucesor-autoriza-rechaza.svg)
+<!-- diagrama: ../Diagramas/02-03-sucesor-autoriza-rechaza.mmd -->
+![Decisión del sucesor: Autoriza / Rechaza](../Diagramas/02-03-sucesor-autoriza-rechaza.svg)
 
 Cada movimiento no solo cambia de tarea: también cambia de **bandeja**, es decir, de área responsable. Un mismo folio recorre varias bandejas a lo largo de su ciclo. El siguiente es un ejemplo ilustrativo del recorrido (los números corresponden al catálogo de bandejas):
 
-<!-- diagrama: diagramas/02-04-cambio-bandejas.mmd -->
-![Recorrido de un folio entre bandejas](diagramas/02-04-cambio-bandejas.svg)
+<!-- diagrama: ../Diagramas/02-04-cambio-bandejas.mmd -->
+![Recorrido de un folio entre bandejas](../Diagramas/02-04-cambio-bandejas.svg)
 
 Esta mecánica de Autoriza / Rechaza es independiente del trámite: funciona igual para una cotización, una emisión o un siniestro. Es la base del movimiento entre nodos. El detalle completo de la clave `sucesion` —todas las variantes de asignación de usuario, `typeSucesor`, `indexSucesor` y las acciones especiales `repetir`, `proceso` y `subproceso`— se documenta en la [Vista de Desarrollo](03-vista-desarrollo.md#sucesor). Aquí basta con retener que el par `autoriza`/`rechaza` de cada tarea, combinado con la evaluación de `sucesion`, es lo que permite cambiar de grafo.
 
 ### Ciclo de vida de un folio
 
-<!-- diagrama: diagramas/02-05-ciclo-vida-folio.mmd -->
-![Ciclo de vida de un folio](diagramas/02-05-ciclo-vida-folio.svg)
+<!-- diagrama: ../Diagramas/02-05-ciclo-vida-folio.mmd -->
+![Ciclo de vida de un folio](../Diagramas/02-05-ciclo-vida-folio.svg)
 
 ### Catálogo de bandejas (áreas)
 
@@ -115,8 +115,8 @@ Los roles del sistema determinan qué variante de frontend sirve Héron a cada u
 
 MIDAS 2.0 está organizado en módulos funcionales. Héron actúa como orquestador central; los demás módulos exponen su funcionalidad a través de él cuando participan en un trámite. Las áreas transversales —Usuarios, Talos, Kronos— operan como infraestructura compartida.
 
-<!-- diagrama: diagramas/02-06-modulos-sistema.mmd -->
-![Módulos del sistema y Héron como orquestador](diagramas/02-06-modulos-sistema.svg)
+<!-- diagrama: ../Diagramas/02-06-modulos-sistema.mmd -->
+![Módulos del sistema y Héron como orquestador](../Diagramas/02-06-modulos-sistema.svg)
 
 | Módulo | Propósito |
 |---|---|
@@ -157,8 +157,8 @@ El catálogo `APLICACIONES` controla a qué módulos puede acceder cada usuario 
 
 MIDAS 2.0 opera sobre tres bases de datos. El router `BaseDatosRouter` en `backend/backend/router.py` dirige cada modelo a su base según su `db_table`: si aparece en la lista `modelsMongo`, va a MongoDB; en caso contrario, a PostgreSQL. El acceso a MIDAS 1.0 no pasa por el ORM de Django; una clase `MidasAPI` usa `pyodbc` directamente para mantener el sistema legado desacoplado.
 
-<!-- diagrama: diagramas/02-07-modelo-datos.mmd -->
-![Modelo de datos: PostgreSQL, MongoDB y SQL Server](diagramas/02-07-modelo-datos.svg)
+<!-- diagrama: ../Diagramas/02-07-modelo-datos.mmd -->
+![Modelo de datos: PostgreSQL, MongoDB y SQL Server](../Diagramas/02-07-modelo-datos.svg)
 
 Los ocho modelos del core de Héron, definidos en `apis/Heron/models.py`:
 
@@ -239,7 +239,7 @@ El tipo `area` hace que el comentario sea visible solo para el área que lo escr
 <table width="100%">
 <tr>
 <td align="left"><a href="01-introduccion.md">← Anterior: Introducción</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="03-vista-desarrollo.md">Siguiente: Vista de Desarrollo →</a></td>
 </tr>
 </table>

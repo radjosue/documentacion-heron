@@ -8,8 +8,8 @@ Los escenarios integran las cuatro vistas mediante casos de uso representativos.
 
 **Capacidades ejercitadas:** renovación de JWT · `AccionesTramite` · `validacion` · `consulta` · `actualizacion` · `sucesion` · `TrackingHeron` · `DatosTareasHeron`
 
-<!-- diagrama: diagramas/06-01-avance-inter-tarea.mmd -->
-![Escenario 1: avance inter-tarea y cambio de bandeja](diagramas/06-01-avance-inter-tarea.svg)
+<!-- diagrama: ../Diagramas/06-01-avance-inter-tarea.mmd -->
+![Escenario 1: avance inter-tarea y cambio de bandeja](../Diagramas/06-01-avance-inter-tarea.svg)
 
 El motor crea un nuevo registro `TrackingHeron` por cada transición de tarea. El registro anterior pasa a `trackingFinal=False`; solo el registro activo tiene `trackingFinal=True`. El usuario destino se resuelve en `sucesion` mediante los valores especiales (`?usuarioCarrusel`, `?TareaProcesada`, etc.) y se verifica contra `GestionAusencias` antes de asignar.
 
@@ -34,8 +34,8 @@ La bifurcación puede ser tan profunda como requiera el proceso: cada opción pu
 
 **Capacidades ejercitadas:** `sucesion` tipo `proceso` · `robot_procesos` · `ConfigHeron` (cola) · `NuevoTramite`
 
-<!-- diagrama: diagramas/06-02-proceso-paralelo.mmd -->
-![Escenario 3: proceso paralelo independiente](diagramas/06-02-proceso-paralelo.svg)
+<!-- diagrama: ../Diagramas/06-02-proceso-paralelo.mmd -->
+![Escenario 3: proceso paralelo independiente](../Diagramas/06-02-proceso-paralelo.svg)
 
 Los parámetros se transfieren al folio hijo mediante las claves `validacionProceso` (condición de lanzamiento) y `nuevoProceso` (datos a copiar al hijo). Una vez creado, el proceso paralelo no tiene comunicación de retorno con el padre.
 
@@ -45,8 +45,8 @@ Los parámetros se transfieren al folio hijo mediante las claves `validacionProc
 
 **Capacidades ejercitadas:** `sucesion` tipo `subproceso` · `robot_subprocesos` · flag `detenido` · pausa de SLA · `GestionAusencias`
 
-<!-- diagrama: diagramas/06-03-subproceso-embebido.mmd -->
-![Escenario 4: subproceso embebido](diagramas/06-03-subproceso-embebido.svg)
+<!-- diagrama: ../Diagramas/06-03-subproceso-embebido.mmd -->
+![Escenario 4: subproceso embebido](../Diagramas/06-03-subproceso-embebido.svg)
 
 A diferencia del proceso paralelo, el subproceso devuelve su resultado al folio padre antes de que este continúe. Es el mecanismo adecuado para operaciones que bloquean el avance por diseño.
 
@@ -56,8 +56,8 @@ A diferencia del proceso paralelo, el subproceso devuelve su resultado al folio 
 
 **Capacidades ejercitadas:** `robot_tramites` · `NuevoTramite` · `ConfigHeron` · `Hermes`
 
-<!-- diagrama: diagramas/06-04-folio-automatico-robot.mmd -->
-![Escenario 5: folio generado por robot](diagramas/06-04-folio-automatico-robot.svg)
+<!-- diagrama: ../Diagramas/06-04-folio-automatico-robot.mmd -->
+![Escenario 5: folio generado por robot](../Diagramas/06-04-folio-automatico-robot.svg)
 
 La configuración del robot vive en `ConfigHeron`. Al crear el folio, el motor ejecuta la misma lógica de inicialización que `NuevoTramite` desde la interfaz: crea el `TrackingHeron` inicial, inicializa el `DatosTareasHeron` y aplica las reglas de SLA y asignación configuradas en el proceso.
 
@@ -67,7 +67,7 @@ La configuración del robot vive en `ConfigHeron`. Al crear el folio, el motor e
 <table width="100%">
 <tr>
 <td align="left"><a href="05-vista-fisica.md">← Anterior: Vista Física</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="07-decisiones.md">Siguiente: Decisiones →</a></td>
 </tr>
 </table>

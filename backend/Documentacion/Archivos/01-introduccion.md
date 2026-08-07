@@ -35,7 +35,7 @@ La guía para configurar un trámite específico —el [Playbook: Nuevo Trámite
 <table width="100%">
 <tr>
 <td align="left">&nbsp;</td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="02-vista-logica.md">Siguiente: Vista Lógica →</a></td>
 </tr>
 </table>

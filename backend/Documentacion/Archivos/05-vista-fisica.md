@@ -8,8 +8,8 @@ MIDAS 2.0 se despliega en una única instancia AWS EC2 con Ubuntu. Toda la pila 
 
 La VPN corporativa cumple una función dual: proporciona acceso seguro a los usuarios internos y actúa como respaldo de DNS ante una falla de HostGator. Si el proveedor DNS externo no resuelve el dominio, los usuarios corporativos conectados por VPN mantienen acceso a través del DNS interno sin ningún cambio en su flujo de trabajo.
 
-<!-- diagrama: diagramas/05-01-topologia-despliegue.mmd -->
-![Topología de despliegue en AWS EC2](diagramas/05-01-topologia-despliegue.svg)
+<!-- diagrama: ../Diagramas/05-01-topologia-despliegue.mmd -->
+![Topología de despliegue en AWS EC2](../Diagramas/05-01-topologia-despliegue.svg)
 
 Nginx es el punto de entrada único al sistema. Enruta las peticiones de API hacia Gunicorn y el resto hacia el servidor de Next.js gestionado por PM2.
 
@@ -39,15 +39,15 @@ La comunicación permitida entre componentes se define **por ambiente**. Cada en
 
 Los documentos de póliza, certificados y endosos siguen esta cadena:
 
-<!-- diagrama: diagramas/05-02-generacion-documentos.mmd -->
-![Cadena de generación de documentos](diagramas/05-02-generacion-documentos.svg)
+<!-- diagrama: ../Diagramas/05-02-generacion-documentos.mmd -->
+![Cadena de generación de documentos](../Diagramas/05-02-generacion-documentos.svg)
 
 LibreOffice corre en modo headless mediante `subprocess` desde el backend. Para manejar la concurrencia, cada hilo utiliza un perfil de usuario ficticio de Ubuntu independiente, lo que evita conflictos entre ejecuciones paralelas del mismo proceso LibreOffice. Los archivos temporales se almacenan en `backend/temporal/` y se limpian cada noche.
 
 ## 5.5 Integraciones externas
 
-<!-- diagrama: diagramas/05-03-integraciones-externas.mmd -->
-![Integraciones externas del backend](diagramas/05-03-integraciones-externas.svg)
+<!-- diagrama: ../Diagramas/05-03-integraciones-externas.mmd -->
+![Integraciones externas del backend](../Diagramas/05-03-integraciones-externas.svg)
 
 Los conectores están disponibles como módulos en `apis/Heron/extras/`: `amisAPI`, `condusefAPI`, `consubancoAPI`, `facturamaApi`, `salesforceAPI`, `prybeAPI`.
 
@@ -59,7 +59,7 @@ Salesforce consume directamente los mismos endpoints de Héron que utiliza la in
 <table width="100%">
 <tr>
 <td align="left"><a href="04-vista-procesos.md">← Anterior: Vista de Procesos</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="06-escenarios.md">Siguiente: Escenarios →</a></td>
 </tr>
 </table>

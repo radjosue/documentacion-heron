@@ -4,18 +4,18 @@ Esta vista describe el sistema en ejecución: qué procesos del sistema operativ
 
 ## 4.1 Procesos en tiempo de ejecución
 
-<!-- diagrama: diagramas/04-01-procesos-runtime.mmd -->
-![Procesos en tiempo de ejecución](diagramas/04-01-procesos-runtime.svg)
+<!-- diagrama: ../Diagramas/04-01-procesos-runtime.mmd -->
+![Procesos en tiempo de ejecución](../Diagramas/04-01-procesos-runtime.svg)
 
 Nginx es el punto de entrada único al sistema. Django maneja la concurrencia con múltiples workers de Gunicorn: procesos Python independientes, cada uno con su propio pool de conexiones a PostgreSQL y MongoDB. Next.js corre como proceso único bajo PM2, con reinicio automático ante fallos.
 
-<!-- diagrama: diagramas/04-02-workers-gunicorn.mmd -->
-![Workers de Gunicorn y proceso de Next.js](diagramas/04-02-workers-gunicorn.svg)
+<!-- diagrama: ../Diagramas/04-02-workers-gunicorn.mmd -->
+![Workers de Gunicorn y proceso de Next.js](../Diagramas/04-02-workers-gunicorn.svg)
 
 ## 4.2 Autenticación JWT
 
-<!-- diagrama: diagramas/04-03-autenticacion-jwt.mmd -->
-![Autenticación y refresco de JWT](diagramas/04-03-autenticacion-jwt.svg)
+<!-- diagrama: ../Diagramas/04-03-autenticacion-jwt.mmd -->
+![Autenticación y refresco de JWT](../Diagramas/04-03-autenticacion-jwt.svg)
 
 El JWT se almacena únicamente en RAM (no en `localStorage` ni cookies persistentes). El servidor Express gestiona el refresco de forma transparente antes de que expire. La autorización por rol no es un middleware centralizado: cada endpoint implementa su propia clase de autorización.
 
@@ -23,8 +23,8 @@ El JWT se almacena únicamente en RAM (no en `localStorage` ni cookies persisten
 
 El recorrido completo de un avance de tarea, visto como secuencia de componentes, combina la ejecución del pipeline de backend con la persistencia en ambas bases de datos:
 
-<!-- diagrama: diagramas/04-04-ciclo-vida-tramite.mmd -->
-![Ciclo de vida de un trámite](diagramas/04-04-ciclo-vida-tramite.svg)
+<!-- diagrama: ../Diagramas/04-04-ciclo-vida-tramite.mmd -->
+![Ciclo de vida de un trámite](../Diagramas/04-04-ciclo-vida-tramite.svg)
 
 El detalle de cada fase del pipeline —su orden real, la etapa sobre la que trabaja y la información que consume— se documenta en la [Vista de Desarrollo](03-vista-desarrollo.md#pipeline). Aquí interesa la mecánica de ejecución: el motor lee el JSON del proceso, ejecuta las fases configuradas, resuelve la sucesión y persiste el nuevo estado en `TrackingHeron` (PostgreSQL) y `DatosTareasHeron` (MongoDB).
 
@@ -116,15 +116,15 @@ params = json.loads(zlib.decompress(base64.b64decode(encoded_param)))
 
 ### Proceso paralelo independiente (`proceso`)
 
-<!-- diagrama: diagramas/04-05-proceso-paralelo.mmd -->
-![Proceso paralelo independiente](diagramas/04-05-proceso-paralelo.svg)
+<!-- diagrama: ../Diagramas/04-05-proceso-paralelo.mmd -->
+![Proceso paralelo independiente](../Diagramas/04-05-proceso-paralelo.svg)
 
 El folio hijo tiene su propio ciclo de vida y no bloquea la continuación del folio padre. La sub-clave `nuevoProceso` en el JSON de `sucesion` define los datos que se transfieren al proceso hijo; `validacionProceso` controla si se lanza o no.
 
 ### Subproceso embebido (`subproceso`)
 
-<!-- diagrama: diagramas/04-06-subproceso-embebido.mmd -->
-![Subproceso embebido con folio en espera](diagramas/04-06-subproceso-embebido.svg)
+<!-- diagrama: ../Diagramas/04-06-subproceso-embebido.mmd -->
+![Subproceso embebido con folio en espera](../Diagramas/04-06-subproceso-embebido.svg)
 
 A diferencia del proceso paralelo, el folio padre **queda bloqueado** (estado Detenido) hasta que el subproceso termine. El subproceso puede retornar datos al padre, lo que permite usarlo para validaciones externas que toman tiempo —PLD, aprobaciones de terceros.
 
@@ -136,7 +136,7 @@ Ambas variantes solo están disponibles desde `AccionesTramite`; `AccionesEtapa`
 <table width="100%">
 <tr>
 <td align="left"><a href="03-vista-desarrollo.md">← Anterior: Vista de Desarrollo</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="05-vista-fisica.md">Siguiente: Vista Física →</a></td>
 </tr>
 </table>

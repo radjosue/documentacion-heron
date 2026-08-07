@@ -37,8 +37,8 @@ path("api/<hash_url>/", MiVistaView.as_view())
 
 El frontend está en Next.js y se organiza en cuatro capas. Conviene entenderlo en conjunto antes de entrar al detalle del JSON, porque es lo que da contexto a cómo se comunican el front y el back.
 
-<!-- diagrama: diagramas/03-01-estructura-frontend.mmd -->
-![Capas del frontend](diagramas/03-01-estructura-frontend.svg)
+<!-- diagrama: ../Diagramas/03-01-estructura-frontend.mmd -->
+![Capas del frontend](../Diagramas/03-01-estructura-frontend.svg)
 
 | Capa | Archivo(s) | Responsabilidad |
 |---|---|---|
@@ -49,8 +49,8 @@ El frontend está en Next.js y se organiza en cuatro capas. Conviene entenderlo 
 
 El flujo de dependencias para una pantalla de Héron: la página se exporta envuelta por su HOC (`export default appHeron(Home)`), que inyecta layout, maneja el token y publica `UserContext`. Dentro de una pantalla de trámite, se renderiza el componente `Tramite` (o `TramitePaginacion`), que recibe la configuración del servidor y **resuelve dinámicamente cada `typeForm` a su componente React** mediante un `switch`, propagando las `propsForm`.
 
-<!-- diagrama: diagramas/03-02-flujo-dependencias-pantalla.mmd -->
-![Flujo de dependencias de una pantalla de Héron](diagramas/03-02-flujo-dependencias-pantalla.svg)
+<!-- diagrama: ../Diagramas/03-02-flujo-dependencias-pantalla.mmd -->
+![Flujo de dependencias de una pantalla de Héron](../Diagramas/03-02-flujo-dependencias-pantalla.svg)
 
 ### Rutas y aplicativos del frontend
 
@@ -291,8 +291,8 @@ El orden y la semántica de las fases dependen del endpoint que las ejecuta. Un 
 
 Este diagrama reúne todo el pipeline en una sola vista: qué JSON entra a cada fase (el del frontend y el del `datosTarea`), sobre qué etapa trabaja (actual o posterior), qué fases persisten su resultado en `datosTarea` y cuáles retornan datos al frontend. Corresponde al recorrido completo de `AccionesTramite`.
 
-<!-- diagrama: diagramas/03-03-pipeline-consolidado.mmd -->
-![Grafo consolidado del pipeline de fases](diagramas/03-03-pipeline-consolidado.svg)
+<!-- diagrama: ../Diagramas/03-03-pipeline-consolidado.mmd -->
+![Grafo consolidado del pipeline de fases](../Diagramas/03-03-pipeline-consolidado.svg)
 
 El JSON del frontend alimenta `depurar` y `preValidacion` (que trabajan sobre los datos crudos de la etapa); a partir de la unión con el `datosTarea`, el resto de las fases operan sobre la estructura combinada. Las fases de la etapa posterior (`obtencion`, `filtro`, `configuracion`) preparan la siguiente pantalla y su resultado vuelve al frontend sin alterar el `datosTarea`. En `AccionesEtapa` el pipeline es el mismo pero termina en `configuracion`, sin `sucesion`.
 
@@ -534,8 +534,8 @@ Cada regla vive bajo `camposValidaciones` con la forma `{ "operador~alias": { re
 - Si ninguna opción resulta válida, la regla devuelve su `respuesta` de nivel superior (con código `400`).
 - El sufijo `~alias` da unicidad a la llave (un JSON no admite dos llaves iguales); el motor usa solo la parte izquierda (`split("~")[0]`) como operador. En el literal, `|` significa OR (`"A|B"`).
 
-<!-- diagrama: diagramas/03-04-arbol-condiciones.mmd -->
-![Evaluación del árbol de condiciones: literal hace break, "*" recursa; el if más profundo decide](diagramas/03-04-arbol-condiciones.svg)
+<!-- diagrama: ../Diagramas/03-04-arbol-condiciones.mmd -->
+![Evaluación del árbol de condiciones: literal hace break, "*" recursa; el if más profundo decide](../Diagramas/03-04-arbol-condiciones.svg)
 
 ### 1. `if` — una guardia simple
 
@@ -647,7 +647,7 @@ La condición externa (`estatusPoliza == "VIGENTE"`) es un `case` literal: si co
 
 ### 4. Ejemplo combinado: switch + `if` anidado + `else`
 
-En la práctica las tres estructuras se combinan en un mismo árbol. El siguiente ejemplo valida el tipo de persona (**switch** `fisica`/`moral`, con `*` como `else`), y dentro de la rama `fisica` encadena un campo obligatorio (CURP) y un **`if` anidado** que valida el RFC con `regex`. Corresponde al adjunto [`ejemplos-flujo-heron/04-validacion-opciones.json`](ejemplos-flujo-heron/04-validacion-opciones.json).
+En la práctica las tres estructuras se combinan en un mismo árbol. El siguiente ejemplo valida el tipo de persona (**switch** `fisica`/`moral`, con `*` como `else`), y dentro de la rama `fisica` encadena un campo obligatorio (CURP) y un **`if` anidado** que valida el RFC con `regex`. Corresponde al adjunto [`../EjemplosFlujo/04-validacion-opciones.json`](../EjemplosFlujo/04-validacion-opciones.json).
 
 ```python
 # Python
@@ -817,7 +817,7 @@ Los archivos de secretos los entrega el área responsable de la plataforma (Sist
 <table width="100%">
 <tr>
 <td align="left"><a href="02-vista-logica.md">← Anterior: Vista Lógica</a></td>
-<td align="center"><a href="README.md">Principal</a></td>
+<td align="center"><a href="../../../README.md">Principal</a></td>
 <td align="right"><a href="04-vista-procesos.md">Siguiente: Vista de Procesos →</a></td>
 </tr>
 </table>
