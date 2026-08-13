@@ -19,6 +19,7 @@ El documento sigue el modelo **4+1** de Philippe Kruchten. Cada vista describe e
 | # | Documento | Contenido |
 |---|---|---|
 | — | [README](README.md) | Portada, índice y control de versiones |
+| 0 | [Guía rápida](backend/Documentacion/Archivos/00-guia-rapida.md) | Referencia condensada: nombrado, numeración, flujos, JSON, condiciones, sucesión, formularios y consultas |
 | 1 | [Introducción](backend/Documentacion/Archivos/01-introduccion.md) | Contexto del sistema, generaciones y alcance |
 | 2 | [Vista Lógica](backend/Documentacion/Archivos/02-vista-logica.md) | Motor Héron, procesos/tareas/etapas, tracking, sucesor y cadenas Autoriza/Rechaza, modelo de datos |
 | 3 | [Vista de Desarrollo](backend/Documentacion/Archivos/03-vista-desarrollo.md) | Organización del código, estructura del JSON, variantes de frontend, pipeline de fases, formularios, parámetros y APIs |
@@ -46,6 +47,7 @@ El foco de esta documentación es el motor Héron: cómo orquesta los trámites,
 | v0.5 | julio 2026 | Integración del Playbook de Nuevo Trámite; sección de árbol de condiciones (if/elif/switch con comparación en Python) en la Vista de Desarrollo; diagramas como SVG con fuente `.mmd` |
 | v0.6 | julio 2026 | Playbook con capturas del panel de administración; reordenamiento (Glosario como documento final) y glosario ampliado con términos de configuración |
 | v0.7 | agosto 2026 | Reorganización de la carpeta: documentos en `backend/Documentacion/Archivos` y recursos separados en `Diagramas`, `Imagenes`, `Inventarios` y `EjemplosFlujo` |
+| v0.8 | agosto 2026 | Guía rápida (referencia condensada de sintaxis y reglas) como documento inicial |
 
 ---
 
@@ -54,6 +56,6 @@ El foco de esta documentación es el motor Héron: cómo orquesta los trámites,
 <tr>
 <td align="left">&nbsp;</td>
 <td align="center">&nbsp;</td>
-<td align="right"><a href="backend/Documentacion/Archivos/01-introduccion.md">Siguiente: Introducción →</a></td>
+<td align="right"><a href="backend/Documentacion/Archivos/00-guia-rapida.md">Siguiente: Guía rápida →</a></td>
 </tr>
 </table>
