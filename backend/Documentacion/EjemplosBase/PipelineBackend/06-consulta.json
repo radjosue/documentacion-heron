@@ -1,0 +1,28 @@
+{
+  "backend": {
+    "Siguiente": {
+      "consulta": {
+        "0.0": {
+          "funcionesConsulta": {
+            "consultarVigenciaPoliza": {
+              "parametros": {
+                "noPoliza": {
+                  "formulario": "datosPoliza",
+                  "valor": "noPoliza"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "estatusPoliza": {
+                  "formulario": "datosPoliza",
+                  "valor": "estatusPoliza"
+                }
+              }
+            }
+          },
+          "camposConsultas": null
+        }
+      }
+    }
+  }
+}

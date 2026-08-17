@@ -1,0 +1,22 @@
+{
+  "backend": {
+    "Siguiente": {
+      "accion": {
+        "0.0": {
+          "funcionesAccion": {
+            "enviarNotificacionUsuarioActualTramite": {
+              "parametros": {
+                "folio": {
+                  "formulario": "infoTramite",
+                  "valor": "folio"
+                }
+              },
+              "parametrosDinamicos": {}
+            }
+          },
+          "camposAcciones": null
+        }
+      }
+    }
+  }
+}

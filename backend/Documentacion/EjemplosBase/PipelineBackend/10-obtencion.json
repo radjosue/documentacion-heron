@@ -1,0 +1,28 @@
+{
+  "backend": {
+    "Siguiente": {
+      "obtencion": {
+        "0.0": {
+          "funcionesObtencion": {
+            "obtenerLista": {
+              "parametros": {
+                "origen": {
+                  "formulario": "datosConvenio",
+                  "valor": "anexos"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "listaAnexos": {
+                  "formulario": "datosConvenio",
+                  "valor": "listaAnexos"
+                }
+              }
+            }
+          },
+          "camposObtenciones": null
+        }
+      }
+    }
+  }
+}

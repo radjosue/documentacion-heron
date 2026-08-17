@@ -313,6 +313,31 @@ El JSON del frontend alimenta `depurar` y `preValidacion` (que trabajan sobre lo
 | `filtro` | Quita información del `datosTarea` antes de enviarlo al frontend |
 | `configuracion` | Añade funcionalidades o datos al frontend (inyección dinámica) |
 
+### Ejemplos de configuración por fase
+
+La carpeta [`EjemplosBase/PipelineBackend/`](../EjemplosBase/PipelineBackend/) contiene **un JSON de ejemplo por cada fase** de `AccionesTramite`, en su orden de ejecución. Cada archivo muestra el bloque completo `backend[accionId][fase][etapa]` listo para copiar. Las llaves y la estructura están verificadas contra los ejecutores (`herramientas/*API.py`); los nombres de función son ilustrativos (inventario completo en [`Inventarios/heron-inventario-funciones-apis.xlsx`](../Inventarios/heron-inventario-funciones-apis.xlsx)).
+
+Dos patrones estructurales cubren las 12 fases:
+
+- **Fases de escritura/datos** (`depuracion`, `ensamblaje`, `consulta`, `actualizacion`, `obtencion`) y de **acción** (`accion`, `subAccion`, `filtro`): usan `funciones{Fase}` (dict de funciones que se ejecutan siempre) + `campos{Fase}` (árbol condicional). Las que devuelven datos incluyen `valores` (mapeo de salida); `accion`/`subAccion`/`filtro` no.
+- **Fases de validación** (`prevalidacion`, `validacion`, `postvalidacion`): usan `estatus` + `camposObligatorios` + `camposValidaciones`.
+- **`sucesion`** es la excepción: `sucesor` + `validacionSucesion`, y **no** se indexa por etapa.
+
+| Fase | Estructura | Ejemplo |
+|---|---|---|
+| `depuracion` | `funcionesDepuracion` + `camposDepuraciones` | [01-depuracion.json](../EjemplosBase/PipelineBackend/01-depuracion.json) |
+| `preValidacion` | `estatus` + `camposObligatorios` + `camposValidaciones` | [02-prevalidacion.json](../EjemplosBase/PipelineBackend/02-prevalidacion.json) |
+| `validacion` | `estatus` + `camposObligatorios` + `camposValidaciones` | [03-validacion.json](../EjemplosBase/PipelineBackend/03-validacion.json) |
+| `ensamblaje` | `funcionesEnsamble` + `camposEnsamble` | [04-ensamblaje.json](../EjemplosBase/PipelineBackend/04-ensamblaje.json) |
+| `postValidacion` | `estatus` + `camposObligatorios` + `camposValidaciones` | [05-postvalidacion.json](../EjemplosBase/PipelineBackend/05-postvalidacion.json) |
+| `consulta` | `funcionesConsulta` + `camposConsultas` (con `valores`) | [06-consulta.json](../EjemplosBase/PipelineBackend/06-consulta.json) |
+| `actualizacion` | `funcionesActualizacion` + `camposActualizaciones` (con `valores`) | [07-actualizacion.json](../EjemplosBase/PipelineBackend/07-actualizacion.json) |
+| `accion` | `funcionesAccion` + `camposAcciones` | [08-accion.json](../EjemplosBase/PipelineBackend/08-accion.json) |
+| `subAccion` | `funcionesAccion` + `camposAcciones` (encolada) | [09-subaccion.json](../EjemplosBase/PipelineBackend/09-subaccion.json) |
+| `obtencion` | `funcionesObtencion` + `camposObtenciones` (con `valores`) | [10-obtencion.json](../EjemplosBase/PipelineBackend/10-obtencion.json) |
+| `filtro` | `funcionesFiltro` + `camposFiltros` | [11-filtro.json](../EjemplosBase/PipelineBackend/11-filtro.json) |
+| `sucesion` | `sucesor` + `validacionSucesion` | [12-sucesion.json](../EjemplosBase/PipelineBackend/12-sucesion.json) |
+
 ## 3.6 Parámetros de las funciones
 
 Las funciones del pipeline reciben sus argumentos mediante dos patrones. La resolución de rutas y valores la hacen funciones auxiliares (`getValuePath`, `findAllOcurrences`, `packDatosNivel`) definidas en `apis/Midas/tools.py` y reexportadas por `apis/Heron/tools.py`.

@@ -637,6 +637,8 @@ Matices importantes:
 - `campos{Fase}` — **árbol condicional** if/switch (mismo mecanismo recursivo que `camposValidaciones`, con `opciones`/`*`): solo aplica sus funciones si una validación se cumple.
 - Si la fase se usa en cualquier etapa, **debe existir (aunque sea `null`) en todas las etapas de esa fase**, o el core lanza error 500.
 
+> **Ejemplo por fase.** En [`EjemplosBase/PipelineBackend/`](../EjemplosBase/PipelineBackend/) hay un JSON de ejemplo por cada fase del pipeline (una llave `backend[accionId][fase][etapa]` completa), listo para copiar y adaptar.
+
 **La subllave `valores` (mapeo de salida).** En las fases que devuelven datos, cada función lleva —además de `parametros`— una llave `valores` que define **dónde** se guarda el resultado: `{ llaveDestino: { "formulario": ..., "valor": ... } }`. Reglas: `valor: "*"` vuelca **todo** el resultado bajo la ruta indicada; una llave `"^…$"` aplica regex sobre las llaves del resultado; si no indicas ruta, se guarda a nivel raíz (mala práctica). El destino se funde con `updateDatosDelete` (agrega/sobrescribe sin borrar el resto).
 
 **Acceso a documentos por fase (al validar archivos).** `depuracion` y `preValidacion` operan solo sobre el JSON del front y **no** ven documentos. `validacion` opera sobre el JSON unido pero **no lee el contenido** del archivo; solo puede verificar que la **referencia** exista en `visualizarDocumentos` (útil para exigir un adjunto). `postValidacion` es la **única** fase con acceso al **contenido físico** del archivo (leer INE/Excel/XML/PDF, layouts, OCR). Diseña en consecuencia: *validar-que-existe* → `validacion`; *validar-el-contenido* → `postValidacion`.

@@ -1,0 +1,61 @@
+{
+  "backend": {
+    "Siguiente": {
+      "validacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "Datos validados con éxito."
+            }
+          },
+          "camposObligatorios": {
+            "datosConvenio": {
+              "montoConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El monto es obligatorio."
+                }
+              }
+            }
+          },
+          "camposValidaciones": {
+            "reglasMonto": {
+              "between~montoConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El monto debe estar entre 0 y 10000000."
+                },
+                "parametros": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "montoConvenio"
+                  }
+                },
+                "opciones": {
+                  "0-10000000": {
+                    "estatus": {
+                      "valido": true,
+                      "respuesta": {
+                        "etapa": "0.0",
+                        "codigo": 201,
+                        "mensaje": "OK"
+                      }
+                    },
+                    "camposObligatorios": null,
+                    "camposValidaciones": null
+                  }
+                },
+                "parametrosDinamicos": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

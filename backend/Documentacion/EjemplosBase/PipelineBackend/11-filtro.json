@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "Siguiente": {
+      "filtro": {
+        "0.0": {
+          "funcionesFiltro": {
+            "filtrarDocumentosNoValidados": {
+              "parametros": {},
+              "parametrosDinamicos": {}
+            }
+          },
+          "camposFiltros": null
+        }
+      }
+    }
+  }
+}

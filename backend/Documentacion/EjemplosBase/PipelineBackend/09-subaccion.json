@@ -1,0 +1,22 @@
+{
+  "backend": {
+    "Siguiente": {
+      "subAccion": {
+        "0.0": {
+          "funcionesAccion": {
+            "actualizarDatosFolio": {
+              "parametros": {
+                "folio": {
+                  "formulario": "infoTramite",
+                  "valor": "folio"
+                }
+              },
+              "parametrosDinamicos": {}
+            }
+          },
+          "camposAcciones": null
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "backend": {
+    "Siguiente": {
+      "actualizacion": {
+        "0.0": {
+          "funcionesActualizacion": {
+            "guardarFechaActual": {
+              "parametros": {
+                "formato": {
+                  "formulario": null,
+                  "valor": "%d/%m/%Y %H:%M"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "fechaCaptura": {
+                  "formulario": "infoTramite",
+                  "valor": "fechaCaptura"
+                }
+              }
+            },
+            "==~estatus": {
+              "parametros": {
+                "valor": {
+                  "formulario": null,
+                  "valor": "CAPTURADO"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "estatusConvenio": {
+                  "formulario": "infoTramite",
+                  "valor": "estatusConvenio"
+                }
+              }
+            }
+          },
+          "camposActualizaciones": null
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "backend": {
+    "Siguiente": {
+      "preValidacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "OK"
+            }
+          },
+          "camposObligatorios": {
+            "datosConvenio": {
+              "nombreConvenio": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "El nombre del convenio es obligatorio."
+                }
+              }
+            }
+          },
+          "camposValidaciones": null
+        }
+      }
+    }
+  }
+}

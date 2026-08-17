@@ -1,0 +1,28 @@
+{
+  "backend": {
+    "Siguiente": {
+      "ensamblaje": {
+        "0.0": {
+          "funcionesEnsamble": {
+            "==": {
+              "parametros": {
+                "valor": {
+                  "formulario": "datosConvenio",
+                  "valor": "nombreConvenio"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "nombre": {
+                  "formulario": "resumenConvenio",
+                  "valor": "nombre"
+                }
+              }
+            }
+          },
+          "camposEnsamble": null
+        }
+      }
+    }
+  }
+}

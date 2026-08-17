@@ -1,0 +1,30 @@
+{
+  "backend": {
+    "Siguiente": {
+      "sucesion": {
+        "sucesor": "2",
+        "validacionSucesion": {
+          "validacion": "contieneDatos",
+          "opciones": {
+            "*": {
+              "sucesor": "2",
+              "typeSucesor": "Autoriza",
+              "indexSucesor": 0,
+              "usuario": "?usuarioCarrusel",
+              "bandeja": 5,
+              "estatus": 0,
+              "etapaId": "0.0",
+              "validacionSucesion": null
+            }
+          },
+          "parametrosDinamicos": {
+            "valor": {
+              "formulario": "datosConvenio",
+              "valor": "nombreConvenio"
+            }
+          }
+        }
+      }
+    }
+  }
+}

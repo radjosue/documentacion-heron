@@ -68,6 +68,8 @@ Estructura de primer nivel del documento de proceso (colección `FormulariosHero
 
 `depuracion`/`prevalidacion` reciben el JSON del frontend; de `validacion` en adelante, la unión front + `datosTarea`. Tabla completa (etapa actual/posterior, entrada/salida) → [Vista de Desarrollo §3.5](03-vista-desarrollo.md#pipeline)
 
+**Ejemplo JSON por fase** (uno por cada fase, listo para copiar) → [`EjemplosBase/PipelineBackend/`](../EjemplosBase/PipelineBackend/)
+
 ## Condiciones: if / elif / switch
 
 El árbol `opciones` (en `validacion` y `sucesion`) es la lógica condicional:

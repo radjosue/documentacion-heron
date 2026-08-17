@@ -1,0 +1,28 @@
+{
+  "backend": {
+    "Siguiente": {
+      "depuracion": {
+        "0.0": {
+          "funcionesDepuracion": {
+            "clear": {
+              "parametros": {
+                "valor": {
+                  "formulario": "datosConvenio",
+                  "valor": "camposAuxiliares"
+                }
+              },
+              "parametrosDinamicos": {},
+              "valores": {
+                "camposAuxiliares": {
+                  "formulario": "datosConvenio",
+                  "valor": "camposAuxiliares"
+                }
+              }
+            }
+          },
+          "camposDepuraciones": null
+        }
+      }
+    }
+  }
+}

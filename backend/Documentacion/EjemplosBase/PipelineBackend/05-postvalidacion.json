@@ -1,0 +1,30 @@
+{
+  "backend": {
+    "Siguiente": {
+      "postValidacion": {
+        "0.0": {
+          "estatus": {
+            "valido": true,
+            "respuesta": {
+              "etapa": "0.0",
+              "codigo": 201,
+              "mensaje": "Documentos validados."
+            }
+          },
+          "camposObligatorios": {
+            "visualizadorDocumentos": {
+              "convenioFirmado": {
+                "respuesta": {
+                  "etapa": "0.0",
+                  "codigo": 400,
+                  "mensaje": "Adjunta el convenio firmado."
+                }
+              }
+            }
+          },
+          "camposValidaciones": null
+        }
+      }
+    }
+  }
+}
