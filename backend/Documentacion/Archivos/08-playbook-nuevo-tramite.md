@@ -339,7 +339,7 @@ El layout de las filas lo controla `propsForm.variant` del **formulario** (no co
 
 > Los datos que una consulta devuelve solo se pintan si sus llaves **coinciden literal** con los `ref` de los inputs: el frontend descarta lo que no existe en sus campos, sin error. Es la contraparte frontend de la regla de coincidencia de `refForm`.
 
-**Tipos de formulario (`typeForm`, PascalCase).** El contenedor del trámite resuelve el `typeForm` con un `switch` case-sensitive: si el valor no coincide con un case, el form **no se pinta ni se lee**, sin error visible. El inventario completo con las props de cada uno está en el adjunto `../Inventarios/heron-inventario-componentes-frontend.xlsx` (hoja *Componentes typeForm*); el adjunto `06-etapa-forms-typeform.json` muestra una etapa combinando varios. Guía de selección:
+**Tipos de formulario (`typeForm`, PascalCase).** El contenedor del trámite resuelve el `typeForm` con un `switch` case-sensitive: si el valor no coincide con un case, el form **no se pinta ni se lee**, sin error visible. El inventario completo con las props de cada uno está en el adjunto `../Inventarios/heron-inventario-componentes-frontend.xlsx` (hoja *Componentes typeForm*); el adjunto `../EjemplosFlujo/06-etapa-forms-typeform.json` muestra una etapa combinando varios y la carpeta [`EjemplosBase/FormulariosFrontend/`](../EjemplosBase/FormulariosFrontend/) trae **un ejemplo por cada `typeForm`** (con sus tipos de input). Guía de selección:
 
 | `typeForm` | Cuándo elegirlo | `url` | Notas |
 |---|---|---|---|

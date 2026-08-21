@@ -1,0 +1,20 @@
+{
+  "typeForm": "FormularioSelect",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "beneficios",
+  "propsForm": {
+    "url": "/api/<hash consulta opciones>/",
+    "selectFormsId": "beneficiosConsulta",
+    "title": "Beneficios adicionales",
+    "titleOptions": "Selecciona",
+    "type": "Beneficio",
+    "style": "HIR",
+    "optionalOptions": [
+      "beneficioX"
+    ],
+    "minSelectedOptions": 1,
+    "validOptions": true,
+    "blockOptions": false
+  }
+}

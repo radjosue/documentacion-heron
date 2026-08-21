@@ -1,0 +1,30 @@
+{
+  "typeForm": "FormularioFiltro",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "filtroProducto",
+  "propsForm": {
+    "title": "Seleccion de producto",
+    "style": "HIR",
+    "variant": "Row",
+    "url": "/api/<hash filtro>/",
+    "forms": {
+      "0": {
+        "Ramo": {
+          "ref": "ramo",
+          "type": "select",
+          "variant": "InputGroup",
+          "modifier": {
+            "options": [
+              "Vida",
+              "GMM",
+              "Autos"
+            ]
+          },
+          "config": {},
+          "filterFormsId": "producto"
+        }
+      }
+    }
+  }
+}

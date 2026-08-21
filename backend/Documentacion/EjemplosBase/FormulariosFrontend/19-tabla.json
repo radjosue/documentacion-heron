@@ -1,0 +1,27 @@
+{
+  "typeForm": "Tabla",
+  "blockForm": false,
+  "validForm": false,
+  "refForm": "resumen",
+  "propsForm": {
+    "title": "Resumen",
+    "numRows": 10,
+    "style": "HIR",
+    "data": {
+      "header": [
+        "Concepto",
+        "Monto"
+      ],
+      "body": [
+        [
+          "Prima",
+          "$1,200.00"
+        ],
+        [
+          "IVA",
+          "$192.00"
+        ]
+      ]
+    }
+  }
+}

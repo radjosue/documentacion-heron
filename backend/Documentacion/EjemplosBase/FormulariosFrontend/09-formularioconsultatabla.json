@@ -1,0 +1,78 @@
+{
+  "typeForm": "FormularioConsultaTabla",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "seleccionPolizas",
+  "propsForm": {
+    "url": "/api/<hash busqueda>/",
+    "title": "Buscar polizas",
+    "titleSelected": "Seleccionadas",
+    "style": "HIR",
+    "min": 1,
+    "max": null,
+    "numRows": 10,
+    "mensaje": "Quitar de la seleccion?",
+    "headersSearch": {
+      "noPoliza": "Poliza",
+      "contratante": "Contratante"
+    },
+    "headersSelected": {
+      "noPoliza": "Poliza"
+    },
+    "fieldsQuery": {
+      "0": {
+        "No. de poliza": {
+          "ref": "noPoliza",
+          "type": "poliza",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {}
+        }
+      }
+    },
+    "formSearch": {
+      "typeForm": "Formulario",
+      "blockForm": false,
+      "validForm": true,
+      "refForm": "busquedaPoliza",
+      "propsForm": {
+        "title": "Busqueda",
+        "style": "HIR",
+        "variant": "Row",
+        "fields": {
+          "0": {
+            "Poliza": {
+              "ref": "noPoliza",
+              "type": "poliza",
+              "variant": "InputGroup",
+              "modifier": {},
+              "config": {}
+            }
+          }
+        }
+      }
+    },
+    "formSelected": {
+      "typeForm": "Formulario",
+      "blockForm": false,
+      "validForm": true,
+      "refForm": "polizaSeleccionada",
+      "propsForm": {
+        "title": "Detalle",
+        "style": "HIR",
+        "variant": "Row",
+        "fields": {
+          "0": {
+            "Observacion": {
+              "ref": "observacion",
+              "type": "text",
+              "variant": "InputGroup",
+              "modifier": {},
+              "config": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

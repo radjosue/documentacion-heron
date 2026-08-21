@@ -1,0 +1,47 @@
+{
+  "typeForm": "FormularioLista",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "dependientes",
+  "propsForm": {
+    "title": "Dependientes",
+    "type": "Dependiente",
+    "min": 1,
+    "max": 10,
+    "iconAdd": "bi bi-plus-circle",
+    "iconRest": "bi bi-dash-circle",
+    "style": "HIR",
+    "copyData": false,
+    "forms": [
+      {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "dependiente",
+        "propsForm": {
+          "title": "Dependiente",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Nombre": {
+                "ref": "nombre",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              },
+              "Parentesco": {
+                "ref": "parentesco",
+                "type": "parentesco",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

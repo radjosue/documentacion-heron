@@ -1,0 +1,37 @@
+{
+  "typeForm": "FormularioVisualizador",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "solicitud",
+  "propsForm": {
+    "url": "/api/<hash documento>/",
+    "title": "Solicitud",
+    "style": "HIR",
+    "forms": [
+      {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "solicitud",
+        "propsForm": {
+          "title": "Datos",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Folio": {
+                "ref": "folio",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

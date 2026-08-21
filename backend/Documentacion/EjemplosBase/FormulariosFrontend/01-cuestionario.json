@@ -1,0 +1,29 @@
+{
+  "typeForm": "Cuestionario",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "cuestionarioMedico",
+  "propsForm": {
+    "title": "Cuestionario medico",
+    "style": "HIR",
+    "preguntas": {
+      "0": {
+        "pregunta": "Fuma actualmente?",
+        "type": "radioGroup",
+        "modifier": {
+          "options": [
+            "Si",
+            "No"
+          ]
+        }
+      },
+      "1": {
+        "pregunta": "Padecimientos previos",
+        "type": "textArea",
+        "config": {
+          "maxLength": 500
+        }
+      }
+    }
+  }
+}

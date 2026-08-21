@@ -1,0 +1,15 @@
+{
+  "typeForm": "RegistroBeneficiarios",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "beneficiarios",
+  "propsForm": {
+    "type": "Normal",
+    "max": 4,
+    "label": "Usar datos del contratante",
+    "domicilio": {
+      "usarDomicilioExtranjero": false
+    },
+    "style": "HIR"
+  }
+}

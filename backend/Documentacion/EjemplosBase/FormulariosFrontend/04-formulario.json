@@ -1,0 +1,214 @@
+{
+  "typeForm": "Formulario",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosGenerales",
+  "propsForm": {
+    "title": "Datos generales",
+    "icon": "bi bi-person-fill",
+    "legend": "Captura los datos del contratante.",
+    "style": "HIR",
+    "variant": "Row",
+    "fields": {
+      "0": {
+        "Nombre completo": {
+          "ref": "nombreContratante",
+          "type": "text",
+          "variant": "InputGroup",
+          "modifier": {
+            "clearButton": true
+          },
+          "config": {
+            "maxLength": 100
+          },
+          "errormessage": "El nombre es obligatorio.",
+          "valid": true,
+          "block": false
+        },
+        "RFC": {
+          "ref": "rfcContratante",
+          "type": "rfc",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "Detectamos un error en tu RFC.",
+          "query": "consultarDatosContratante",
+          "blockValue": true
+        }
+      },
+      "1": {
+        "CURP": {
+          "ref": "curpContratante",
+          "type": "curp",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "CURP invalida."
+        },
+        "Correo": {
+          "ref": "correo",
+          "type": "email",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "Correo invalido."
+        },
+        "Telefono": {
+          "ref": "telefono",
+          "type": "telefono",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "Telefono invalido."
+        }
+      },
+      "2": {
+        "Estado civil": {
+          "ref": "estadoCivil",
+          "type": "select",
+          "variant": "InputGroup",
+          "modifier": {
+            "options": [
+              "Soltero(a)",
+              "Casado(a)",
+              "Union Libre",
+              "Viudo(a)",
+              "Divorciado(a)"
+            ]
+          },
+          "config": {},
+          "errormessage": "Selecciona un estado civil."
+        },
+        "Genero": {
+          "ref": "genero",
+          "type": "selectObject",
+          "variant": "InputGroup",
+          "modifier": {
+            "options": [
+              {
+                "ref": "H",
+                "name": "Hombre"
+              },
+              {
+                "ref": "M",
+                "name": "Mujer"
+              }
+            ]
+          },
+          "config": {}
+        },
+        "Fecha de nacimiento": {
+          "ref": "fechaNacimiento",
+          "type": "date",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {
+            "min": "1900-01-01"
+          },
+          "errormessage": "Fecha invalida."
+        }
+      },
+      "3": {
+        "Codigo postal": {
+          "ref": "codigoPostal",
+          "type": "codigoPostal",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "CP invalido."
+        },
+        "Ocupacion": {
+          "ref": "ocupacion",
+          "type": "ocupacion",
+          "variant": "InputGroup",
+          "modifier": {
+            "catalogo": "ocupaciones"
+          },
+          "config": {}
+        },
+        "Pais": {
+          "ref": "pais",
+          "type": "pais",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {}
+        }
+      },
+      "4": {
+        "Suma asegurada": {
+          "ref": "sumaAsegurada",
+          "type": "dinero",
+          "variant": "InputGroup",
+          "modifier": {
+            "min": 0,
+            "errorMin": "Debe ser mayor a 0."
+          },
+          "config": {},
+          "errormessage": "Monto invalido."
+        },
+        "Porcentaje": {
+          "ref": "porcentaje",
+          "type": "porcentaje",
+          "variant": "InputGroup",
+          "modifier": {
+            "min": 0,
+            "max": 100
+          },
+          "config": {}
+        },
+        "Dependientes": {
+          "ref": "dependientes",
+          "type": "int",
+          "variant": "InputGroup",
+          "modifier": {
+            "min": 0,
+            "max": 10
+          },
+          "config": {}
+        }
+      },
+      "5": {
+        "Comentarios": {
+          "ref": "comentarios",
+          "type": "textArea",
+          "variant": "InputClassic",
+          "modifier": {},
+          "config": {
+            "maxLength": 500
+          },
+          "valid": false
+        },
+        "Acepta aviso de privacidad": {
+          "ref": "aceptaAviso",
+          "type": "checkBox",
+          "variant": "Input",
+          "modifier": {},
+          "config": {},
+          "value": false,
+          "errormessage": "Debes aceptar el aviso."
+        },
+        "Notificaciones": {
+          "ref": "notificaciones",
+          "type": "switch",
+          "variant": "Input",
+          "modifier": {},
+          "config": {},
+          "value": true
+        }
+      },
+      "6": {
+        "Identificacion (PDF)": {
+          "ref": "identificacion",
+          "type": "file-pdf",
+          "variant": "InputGroup",
+          "modifier": {
+            "accept": [
+              "pdf"
+            ]
+          },
+          "config": {}
+        }
+      }
+    }
+  }
+}

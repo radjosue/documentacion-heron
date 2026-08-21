@@ -1,0 +1,49 @@
+{
+  "componente": "FormularioContext",
+  "montableViaTypeForm": false,
+  "uso": "Contenedor con InputContext compartido; lo usa internamente FormularioLista.",
+  "props": {
+    "forms": [
+      {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "bloqueA",
+        "propsForm": {
+          "title": "Bloque A",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Nombre": {
+                "ref": "nombre",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {
+                  "clearButton": true
+                },
+                "config": {
+                  "maxLength": 100
+                },
+                "errormessage": "El nombre es obligatorio."
+              },
+              "Monto": {
+                "ref": "monto",
+                "type": "dinero",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {},
+                "errormessage": "Monto invalido."
+              }
+            }
+          }
+        }
+      }
+    ],
+    "config": {
+      "token": "<token>",
+      "urlServer": "http://127.0.0.1:8000"
+    },
+    "style": "HIR"
+  }
+}

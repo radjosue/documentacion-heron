@@ -1,0 +1,24 @@
+{
+  "componente": "PagoTarjeta",
+  "montableViaTypeForm": false,
+  "uso": "Pago con tarjeta en flujos de venta; no esta en el switch de Tramite.",
+  "props": {
+    "type": "Paquete",
+    "carrito": {
+      "0": {
+        "producto": "Plan Basico",
+        "monto": "1200.00"
+      }
+    },
+    "pasarela": "conekta",
+    "showStatus": true,
+    "config": {
+      "listaTarjetas": [
+        "visa",
+        "mastercard",
+        "amex"
+      ]
+    },
+    "style": "HIR"
+  }
+}

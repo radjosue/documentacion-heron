@@ -1,0 +1,54 @@
+{
+  "typeForm": "FormularioTabs",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosPoliza",
+  "propsForm": {
+    "title": "Datos de la poliza",
+    "style": "HIR",
+    "tabs": [
+      "General",
+      "Documentacion"
+    ],
+    "nameTabDocuments": {
+      "Documentacion": "^doc.*$"
+    },
+    "forms": [
+      {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "general",
+        "propsForm": {
+          "title": "General",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Producto": {
+                "ref": "producto",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              }
+            }
+          }
+        }
+      },
+      {
+        "typeForm": "FormularioArchivos",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "documentacion",
+        "propsForm": {
+          "title": "Documentos",
+          "types": [
+            "pdf"
+          ],
+          "style": "HIR"
+        }
+      }
+    ]
+  }
+}

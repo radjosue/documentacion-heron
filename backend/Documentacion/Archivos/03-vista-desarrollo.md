@@ -219,6 +219,12 @@ El valor de `typeForm` se resuelve a un componente React en el `switch` de `cons
 
 `FormularioCoberturas` y `FormularioConsultaTabla` solo están soportados por `Tramite.js`, no por `TramitePaginacion.js`. `TramitePaginacion.js` agrega el pseudo-tipo `Paginas`, que no es un componente: alimenta el paginador con `numeroPaginas` y `paginaActual`.
 
+### Ejemplos de configuración por formulario
+
+La carpeta [`EjemplosBase/FormulariosFrontend/`](../EjemplosBase/FormulariosFrontend/) contiene **un JSON de ejemplo por componente** del inventario de `typeForm` (26), numerados igual que el inventario. Cada archivo muestra el objeto de un `form` dentro de `frontend.etapas[].forms[]` con sus `propsForm`; el ejemplo [`04-formulario.json`](../EjemplosBase/FormulariosFrontend/04-formulario.json) reúne los distintos **tipos de input** (`text`, `select`, `date`, `checkBox`, `rfc`, `dinero`, `porcentaje`, `file-pdf`, catálogos de servidor…) en `propsForm.fields`.
+
+De los 26, **20 son montables vía `typeForm`** (resueltos por el `switch` de `Tramite.js`) y **6 no** (`Documentos`, las variantes Servidor de `Formulario`/`FormularioDinamico`, `FormularioContext`, `PagoTarjeta`, `PaqueteConfigurable`): estos últimos se usan directamente en páginas o dentro de otros componentes, y sus ejemplos van marcados con `"montableViaTypeForm": false`. El inventario completo de props y tipos de input está en [`Inventarios/heron-inventario-componentes-frontend.xlsx`](../Inventarios/heron-inventario-componentes-frontend.xlsx).
+
 <a id="pipeline"></a>
 
 ## 3.5 Pipeline de ejecución del backend

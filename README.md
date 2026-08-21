@@ -13,7 +13,7 @@ El documento sigue el modelo **4+1** de Philippe Kruchten. Cada vista describe e
 | `backend/Documentacion/Imagenes/` | Capturas de pantalla referenciadas por los documentos |
 | `backend/Documentacion/Inventarios/` | Inventarios de funciones y componentes (`.xlsx`) |
 | `backend/Documentacion/EjemplosFlujo/` | Ejemplos de configuración JSON de un flujo |
-| `backend/Documentacion/EjemplosBase/` | Ejemplos base por fase del pipeline (`PipelineBackend/`) |
+| `backend/Documentacion/EjemplosBase/` | Ejemplos base: por fase del pipeline (`PipelineBackend/`) y por tipo de formulario (`FormulariosFrontend/`) |
 
 ## Contenido
 
@@ -50,6 +50,7 @@ El foco de esta documentación es el motor Héron: cómo orquesta los trámites,
 | v0.7 | agosto 2026 | Reorganización de la carpeta: documentos en `backend/Documentacion/Archivos` y recursos separados en `Diagramas`, `Imagenes`, `Inventarios` y `EjemplosFlujo` |
 | v0.8 | agosto 2026 | Guía rápida (referencia condensada de sintaxis y reglas) como documento inicial |
 | v0.9 | agosto 2026 | Ejemplos base de configuración JSON por fase del pipeline (`EjemplosBase/PipelineBackend`); aclaración de las acciones especiales `repetir`/`proceso`/`subproceso` como bloques dedicados en la Vista de Desarrollo |
+| v0.10 | agosto 2026 | Ejemplos base de configuración JSON por tipo de formulario del frontend, con tipos de input (`EjemplosBase/FormulariosFrontend`, 26 componentes `typeForm`) |
 
 ---
 

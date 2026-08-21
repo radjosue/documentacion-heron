@@ -1,0 +1,16 @@
+{
+  "typeForm": "VisualizadorDocumentos",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "documentosFolio",
+  "propsForm": {
+    "url": "/api/<hash descargar archivo>/",
+    "title": "Documentos del tramite",
+    "style": "HIR",
+    "valid": true,
+    "remove": true,
+    "namesDelete": "^temp.*$",
+    "vigencia": true,
+    "namesVigencia": "^(identificacion|domicilio).*$"
+  }
+}

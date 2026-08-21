@@ -1,0 +1,14 @@
+{
+  "componente": "Documentos",
+  "montableViaTypeForm": false,
+  "uso": "Lo usa PaqueteConfigurable; no aparece en el switch de Tramite.",
+  "props": {
+    "title": "Documentos",
+    "documentos": [
+      "identificacion",
+      "comprobanteDomicilio"
+    ],
+    "url": "/api/<hash visualizador>/",
+    "style": "HIR"
+  }
+}

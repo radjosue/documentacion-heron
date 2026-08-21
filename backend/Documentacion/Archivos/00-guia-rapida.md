@@ -110,6 +110,8 @@ Llaves obligatorias de cada `form`: `typeForm`, `blockForm`, `validForm`, `refFo
 
 Catálogo de `typeForm` y `propsForm` → [Vista de Desarrollo §3.4](03-vista-desarrollo.md) · inventario en [`Inventarios/heron-inventario-componentes-frontend.xlsx`](../Inventarios/heron-inventario-componentes-frontend.xlsx)
 
+**Ejemplo JSON por tipo de formulario** (con tipos de input) → [`EjemplosBase/FormulariosFrontend/`](../EjemplosBase/FormulariosFrontend/)
+
 ## Parámetros de las funciones
 
 ```json

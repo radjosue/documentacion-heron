@@ -1,0 +1,17 @@
+{
+  "typeForm": "FormularioArchivos",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "archivosConvenio",
+  "propsForm": {
+    "title": "Documentacion",
+    "icon": "bi bi-paperclip",
+    "style": "HIR",
+    "types": [
+      "pdf"
+    ],
+    "namesAccept": "^(convenio|identificacion).*$",
+    "maxSize": 20,
+    "extension": true
+  }
+}

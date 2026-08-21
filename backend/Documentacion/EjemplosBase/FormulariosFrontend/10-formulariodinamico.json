@@ -1,0 +1,57 @@
+{
+  "typeForm": "FormularioDinamico",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosPersona",
+  "propsForm": {
+    "title": "Datos segun tipo de persona",
+    "style": "HIR",
+    "variant": "Row",
+    "forms": {
+      "fisica": {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "datosPersona",
+        "propsForm": {
+          "title": "Persona fisica",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "CURP": {
+                "ref": "curp",
+                "type": "curp",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              }
+            }
+          }
+        }
+      },
+      "moral": {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "datosPersona",
+        "propsForm": {
+          "title": "Persona moral",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Razon social": {
+                "ref": "razonSocial",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "typeForm": "FormularioCondicional",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosPersona",
+  "propsForm": {
+    "url": "/api/<hash consulta condicional>/",
+    "type": "Individual",
+    "style": "HIR",
+    "forms": {
+      "base": {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "datosPersona",
+        "propsForm": {
+          "title": "Datos base",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Nombre": {
+                "ref": "nombre",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {
+                  "clearButton": true
+                },
+                "config": {
+                  "maxLength": 100
+                },
+                "errormessage": "El nombre es obligatorio."
+              },
+              "Monto": {
+                "ref": "monto",
+                "type": "dinero",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {},
+                "errormessage": "Monto invalido."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

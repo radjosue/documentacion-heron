@@ -1,0 +1,19 @@
+{
+  "typeForm": "Domicilio",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "domicilioContratante",
+  "propsForm": {
+    "title": "Domicilio",
+    "style": "HIR",
+    "usarDatos": true,
+    "label": "Copiar el domicilio del contratante",
+    "usarDomicilioExtranjero": false,
+    "labels": {
+      "calle": "Calle y numero"
+    },
+    "blockFields": {
+      "estado": true
+    }
+  }
+}

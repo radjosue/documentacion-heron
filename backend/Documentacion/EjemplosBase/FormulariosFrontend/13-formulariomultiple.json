@@ -1,0 +1,45 @@
+{
+  "typeForm": "FormularioMultiple",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "asegurados",
+  "propsForm": {
+    "title": "Asegurados",
+    "type": "Asegurado",
+    "max": 4,
+    "iconAdd": "bi bi-plus-circle",
+    "iconRest": "bi bi-x-circle",
+    "style": "HIR",
+    "forms": [
+      {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "asegurado",
+        "propsForm": {
+          "title": "Asegurado",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Nombre": {
+                "ref": "nombre",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              },
+              "RFC": {
+                "ref": "rfc",
+                "type": "rfc",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {}
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

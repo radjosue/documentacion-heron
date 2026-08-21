@@ -1,0 +1,46 @@
+{
+  "typeForm": "FormularioConsulta",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosPoliza",
+  "propsForm": {
+    "url": "/api/<hash consulta>/",
+    "type": "Individual",
+    "style": "HIR",
+    "dataRetained": [
+      "noPoliza"
+    ],
+    "datosConsulta": {
+      "tipo": {
+        "formulario": null,
+        "valor": "vigente"
+      }
+    },
+    "forms": {
+      "resultado": {
+        "typeForm": "Formulario",
+        "blockForm": false,
+        "validForm": true,
+        "refForm": "datosPoliza",
+        "propsForm": {
+          "title": "Resultado",
+          "style": "HIR",
+          "variant": "Row",
+          "fields": {
+            "0": {
+              "Estatus": {
+                "ref": "estatusPoliza",
+                "type": "text",
+                "variant": "InputGroup",
+                "modifier": {},
+                "config": {
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

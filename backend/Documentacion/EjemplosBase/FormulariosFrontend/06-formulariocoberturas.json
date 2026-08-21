@@ -1,0 +1,30 @@
+{
+  "typeForm": "FormularioCoberturas",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "coberturas",
+  "propsForm": {
+    "title": "Coberturas de la poliza",
+    "style": "HIR",
+    "url": "/api/<hash consulta coberturas>/",
+    "selectFormsId": "coberturasConsulta",
+    "headers": {
+      "cobertura": "Cobertura",
+      "suma": "Suma asegurada"
+    },
+    "parametersQuery": {
+      "producto": {
+        "formulario": "datosGenerales",
+        "valor": "producto"
+      }
+    },
+    "optionalOptions": [
+      "coberturaFuneraria"
+    ],
+    "packOptions": [
+      "paqueteBasico"
+    ],
+    "validOptions": true,
+    "blockOptions": false
+  }
+}

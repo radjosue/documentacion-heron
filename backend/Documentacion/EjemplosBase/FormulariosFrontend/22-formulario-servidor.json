@@ -1,0 +1,43 @@
+{
+  "componente": "Formulario (variante Servidor)",
+  "montableViaTypeForm": false,
+  "uso": "Version funcional con botones y token; se importa directo en paginas.",
+  "props": {
+    "id": "formServidor",
+    "title": "Datos",
+    "style": "HIR",
+    "variant": "Row",
+    "fields": {
+      "0": {
+        "Nombre": {
+          "ref": "nombre",
+          "type": "text",
+          "variant": "InputGroup",
+          "modifier": {
+            "clearButton": true
+          },
+          "config": {
+            "maxLength": 100
+          },
+          "errormessage": "El nombre es obligatorio."
+        },
+        "Monto": {
+          "ref": "monto",
+          "type": "dinero",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {},
+          "errormessage": "Monto invalido."
+        }
+      }
+    },
+    "buttons": [
+      {
+        "name": "Guardar",
+        "type": "submitForm",
+        "action": "/api/<hash>/"
+      }
+    ],
+    "token": "<token>"
+  }
+}

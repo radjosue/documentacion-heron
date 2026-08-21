@@ -1,0 +1,13 @@
+{
+  "typeForm": "DatosPersonales",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "datosContratante",
+  "propsForm": {
+    "title": "Datos del contratante",
+    "tipo": "Contratante",
+    "usarDatos": true,
+    "label": "Usar los datos ya capturados",
+    "style": "HIR"
+  }
+}

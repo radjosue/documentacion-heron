@@ -1,0 +1,24 @@
+{
+  "componente": "PaqueteConfigurable",
+  "montableViaTypeForm": false,
+  "uso": "Configurador de paquete de asegurados en venta de paquetes; uso directo.",
+  "props": {
+    "urlSave": "/api/<hash alta>/",
+    "urlDelete": "/api/<hash baja>/",
+    "token": "<token>",
+    "poliza": {
+      "formulario": "datosPoliza",
+      "valor": "noPoliza"
+    },
+    "config": {
+      "maxHijos": 5,
+      "minHijos": 0,
+      "maxAsegurados": 8,
+      "maxBeneficiarios": 4,
+      "showButtons": true
+    },
+    "datosContratante": {},
+    "saveAsegurados": [],
+    "style": "HIR"
+  }
+}

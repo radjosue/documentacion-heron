@@ -1,0 +1,61 @@
+{
+  "typeForm": "FormularioTabla",
+  "blockForm": false,
+  "validForm": true,
+  "refForm": "beneficiarios",
+  "propsForm": {
+    "title": "Beneficiarios",
+    "type": "Beneficiario",
+    "min": 1,
+    "numRows": 10,
+    "placement": "end",
+    "mensaje": "Eliminar beneficiario?",
+    "style": "HIR",
+    "headers": {
+      "nombre": "Nombre",
+      "porcentaje": "%"
+    },
+    "form": {
+      "typeForm": "Formulario",
+      "blockForm": false,
+      "validForm": true,
+      "refForm": "beneficiario",
+      "propsForm": {
+        "title": "Beneficiario",
+        "style": "HIR",
+        "variant": "Row",
+        "fields": {
+          "0": {
+            "Nombre": {
+              "ref": "nombre",
+              "type": "text",
+              "variant": "InputGroup",
+              "modifier": {},
+              "config": {}
+            },
+            "Porcentaje": {
+              "ref": "porcentaje",
+              "type": "porcentaje",
+              "variant": "InputGroup",
+              "modifier": {},
+              "config": {}
+            }
+          }
+        }
+      }
+    },
+    "filtro": true,
+    "fieldsFilter": {
+      "0": {
+        "Nombre": {
+          "ref": "nombre",
+          "type": "text",
+          "variant": "InputGroup",
+          "modifier": {},
+          "config": {}
+        }
+      }
+    },
+    "saveFilter": "filtroBeneficiarios"
+  }
+}
