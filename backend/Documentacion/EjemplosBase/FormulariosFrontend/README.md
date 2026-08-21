@@ -2,7 +2,9 @@
 
 Un ejemplo de configuración JSON por cada componente del inventario de `typeForm` (26). Cada archivo muestra el objeto de un formulario tal como se declara dentro de `frontend.etapas[].forms[]`, con sus `propsForm` y, cuando aplica, sus campos (`fields`) con distintos tipos de input.
 
-La numeración `NN` coincide con la fila del inventario [`Inventarios/heron-inventario-componentes-frontend.xlsx`](../../Inventarios/heron-inventario-componentes-frontend.xlsx) (hoja *Componentes typeForm*). Las **props y la estructura** están tomadas de ese inventario (derivado del código) y corroboradas contra el `switch` de `components/Servidor/Formularios/Tramite.js` y el ejemplo real [`EjemplosFlujo/05-formulario-fields-inputs.json`](../../EjemplosFlujo/05-formulario-fields-inputs.json). Los **nombres de campo, catálogos y URLs** son ilustrativos.
+La numeración `NN` coincide con la fila del inventario [`Inventarios/heron-inventario-componentes-frontend.xlsx`](../../Inventarios/heron-inventario-componentes-frontend.xlsx) (hoja *Componentes typeForm*).
+Las **props y la estructura** están tomadas de ese inventario.
+Los **nombres de campo, catálogos y URLs** son ilustrativos.
 
 ## Montables vía `typeForm` (20)
 
@@ -46,6 +48,6 @@ El inventario los lista como componentes, pero **no aparecen en el `switch` de `
 
 ## Tipos de input (`fields`)
 
-Los componentes con captura directa (`Formulario`, y los sub-formularios anidados) definen sus campos en `propsForm.fields`, un dict `{ "fila": { "Etiqueta visible": { ref, type, variant, modifier, config, … } } }`. El ejemplo [04-formulario.json](04-formulario.json) reúne varios `type` representativos: `text`, `textArea`, `select`, `selectObject`, `date`, `checkBox`, `switch`, `int`, `dinero`, `porcentaje`, `rfc`, `curp`, `email`, `telefono`, `codigoPostal`, `ocupacion`, `pais`, `file-pdf`. El catálogo completo (95 `type`) y las llaves de input están en el inventario.
+Los componentes con captura directa (`Formulario`, y los sub-formularios anidados) definen sus campos en `propsForm.fields`, un diccionario `{ "fila": { "Etiqueta visible": { ref, type, variant, modifier, config, … } } }`. El ejemplo [04-formulario.json](04-formulario.json) reúne varios `type` representativos: `text`, `textArea`, `select`, `selectObject`, `date`, `checkBox`, `switch`, `int`, `dinero`, `porcentaje`, `rfc`, `curp`, `email`, `telefono`, `codigoPostal`, `ocupacion`, `pais`, `file-pdf`. El catálogo completo (95 `type`) y las llaves de input están en el inventario.
 
 Detalle de componentes y props → [Vista de Desarrollo §3.4](../../Archivos/03-vista-desarrollo.md)
