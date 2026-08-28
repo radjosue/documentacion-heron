@@ -9,7 +9,30 @@
               "parametrosDinamicos": {}
             }
           },
-          "camposFiltros": null
+          "camposFiltros": {
+            "reglaRol": {
+              "==~rol": {
+                "funcionesFiltro": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "infoTramite",
+                    "valor": "rol"
+                  }
+                },
+                "opciones": {
+                  "Externo": {
+                    "funcionesFiltro": {
+                      "filtrarDocumentosNoValidados": {
+                        "parametros": {},
+                        "parametrosDinamicos": {}
+                      }
+                    },
+                    "camposFiltros": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

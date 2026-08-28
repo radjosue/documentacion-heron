@@ -20,7 +20,41 @@
               }
             }
           },
-          "camposEnsamble": null
+          "camposEnsamble": {
+            "reglaRequiereResumen": {
+              "==~requiereResumen": {
+                "funcionesEnsamble": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "requiereResumen"
+                  }
+                },
+                "opciones": {
+                  "SI": {
+                    "funcionesEnsamble": {
+                      "==": {
+                        "parametros": {
+                          "valor": {
+                            "formulario": "datosConvenio",
+                            "valor": "nombreConvenio"
+                          }
+                        },
+                        "parametrosDinamicos": {},
+                        "valores": {
+                          "nombre": {
+                            "formulario": "resumenConvenio",
+                            "valor": "nombre"
+                          }
+                        }
+                      }
+                    },
+                    "camposEnsamble": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

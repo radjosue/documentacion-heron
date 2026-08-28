@@ -20,7 +20,41 @@
               }
             }
           },
-          "camposConsultas": null
+          "camposConsultas": {
+            "reglaNoPoliza": {
+              "contieneDatos~noPoliza": {
+                "funcionesConsulta": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "datosPoliza",
+                    "valor": "noPoliza"
+                  }
+                },
+                "opciones": {
+                  "*": {
+                    "funcionesConsulta": {
+                      "consultarVigenciaPoliza": {
+                        "parametros": {
+                          "noPoliza": {
+                            "formulario": "datosPoliza",
+                            "valor": "noPoliza"
+                          }
+                        },
+                        "parametrosDinamicos": {},
+                        "valores": {
+                          "estatusPoliza": {
+                            "formulario": "datosPoliza",
+                            "valor": "estatusPoliza"
+                          }
+                        }
+                      }
+                    },
+                    "camposConsultas": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

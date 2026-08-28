@@ -35,7 +35,41 @@
               }
             }
           },
-          "camposActualizaciones": null
+          "camposActualizaciones": {
+            "reglaTipoConvenio": {
+              "==~tipoConvenio": {
+                "funcionesActualizacion": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "tipoConvenio"
+                  }
+                },
+                "opciones": {
+                  "PREFERENTE": {
+                    "funcionesActualizacion": {
+                      "==": {
+                        "parametros": {
+                          "valor": {
+                            "formulario": null,
+                            "valor": "ALTA"
+                          }
+                        },
+                        "parametrosDinamicos": {},
+                        "valores": {
+                          "prioridad": {
+                            "formulario": "datosConvenio",
+                            "valor": "prioridad"
+                          }
+                        }
+                      }
+                    },
+                    "camposActualizaciones": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

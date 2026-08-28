@@ -14,7 +14,35 @@
               "parametrosDinamicos": {}
             }
           },
-          "camposAcciones": null
+          "camposAcciones": {
+            "reglaNotificar": {
+              "==~notificar": {
+                "funcionesAccion": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "notificar"
+                  }
+                },
+                "opciones": {
+                  "SI": {
+                    "funcionesAccion": {
+                      "enviarNotificacionUsuarioActualTramite": {
+                        "parametros": {
+                          "folio": {
+                            "formulario": "infoTramite",
+                            "valor": "folio"
+                          }
+                        },
+                        "parametrosDinamicos": {}
+                      }
+                    },
+                    "camposAcciones": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

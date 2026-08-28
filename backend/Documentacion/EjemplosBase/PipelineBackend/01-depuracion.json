@@ -20,7 +20,41 @@
               }
             }
           },
-          "camposDepuraciones": null
+          "camposDepuraciones": {
+            "reglaTipoConvenio": {
+              "==~tipoConvenio": {
+                "funcionesDepuracion": {},
+                "parametrosDinamicos": {
+                  "valor": {
+                    "formulario": "datosConvenio",
+                    "valor": "tipoConvenio"
+                  }
+                },
+                "opciones": {
+                  "TEMPORAL": {
+                    "funcionesDepuracion": {
+                      "clear": {
+                        "parametros": {
+                          "valor": {
+                            "formulario": "datosConvenio",
+                            "valor": "vigencia"
+                          }
+                        },
+                        "parametrosDinamicos": {},
+                        "valores": {
+                          "vigencia": {
+                            "formulario": "datosConvenio",
+                            "valor": "vigencia"
+                          }
+                        }
+                      }
+                    },
+                    "camposDepuraciones": null
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

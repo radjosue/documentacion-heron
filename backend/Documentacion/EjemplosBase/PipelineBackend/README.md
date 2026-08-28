@@ -22,6 +22,7 @@ Las **llaves y la estructura** de cada fase están verificadas contra el código
 Convenciones que comparten:
 
 - Las fases de **escritura/datos** (depuración, ensamblaje, consulta, actualización, obtención) usan el par `funciones{Fase}` (dict keyed por `nombreFuncion~alias`, se ejecuta siempre) + `campos{Fase}` (árbol condicional if/switch). Cada función lleva `parametros`, `parametrosDinamicos` y —salvo acción/filtro— `valores` (dónde se guarda el resultado).
+- Cada ejemplo de **escritura/datos/acción** (`01`, `04`, `06`–`11`) incluye **una validación** en su `campos{Fase}`: una regla `operador~alias` con sus `opciones`, cuyo nodo válido aplica las funciones solo si la condición se cumple (mismo mecanismo que `camposValidaciones`; `funciones{Fase}` a nivel de la regla es el *fallback* si no coincide ninguna opción). No van anidadas.
 - Las fases de **validación** (prevalidación, validación, postvalidación) usan `estatus` + `camposObligatorios` + `camposValidaciones`.
 - Si una fase se usa en alguna etapa, debe existir (aunque sea `null`) en todas las etapas de esa fase, o el core lanza error 500.
 
