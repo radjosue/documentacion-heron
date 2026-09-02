@@ -57,6 +57,7 @@ El foco de esta documentación es el motor Héron: cómo orquesta los trámites,
 | v0.9 | agosto 2026 | Ejemplos base de configuración JSON por fase del pipeline (`EjemplosBase/PipelineBackend`); aclaración de las acciones especiales `repetir`/`proceso`/`subproceso` como bloques dedicados en la Vista de Desarrollo |
 | v0.10 | agosto 2026 | Ejemplos base de configuración JSON por tipo de formulario del frontend, con tipos de input (`EjemplosBase/FormulariosFrontend`, 26 componentes `typeForm`) |
 | v0.11 | agosto 2026 | Ejemplos del pipeline: se agregó una validación en el `campos{Fase}` de cada fase de escritura/datos/acción; referencia a los ejemplos base en el README |
+| v0.12 | septiembre 2026 | Documentación del comentario obligatorio (autoriza/rechaza) vía `ConfigHeron "Comentarios"` en la Vista Lógica y el Playbook, con ejemplo; corrección de la estructura del comentario (`user`, `tipo` capitalizado) |
 
 ---
 

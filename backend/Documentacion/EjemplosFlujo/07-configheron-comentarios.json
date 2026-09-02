@@ -1,0 +1,21 @@
+{
+  "nombreId": "Comentarios",
+  "config": {
+    "Validaciones": {
+      "11-40-1.0-3": {
+        "Autorizar": {
+          "Autoriza": "Debes dejar un comentario de autorización antes de autorizar.",
+          "Rechaza": null,
+          "General": null,
+          "Externo": null
+        },
+        "Rechazar": {
+          "Rechaza": "Indica el motivo del rechazo antes de rechazar.",
+          "Autoriza": null,
+          "General": null,
+          "Externo": null
+        }
+      }
+    }
+  }
+}

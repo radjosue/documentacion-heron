@@ -137,7 +137,8 @@ Los datos devueltos solo se pintan si sus llaves coinciden literal con los `ref`
 
 - Para que un proceso aparezca en **"Nuevo Trámite"**: `ProcesosHeron.vigencia != "0"` **y** entrada en `ConfigHeron "Accesos"` para el tipo de usuario/área.
 - La configuración por usuario resuelve en cascada, gana la más específica: **RFC → Rol → Área → `*`**.
-- Documentos de `ConfigHeron`: `Accesos`, `Barra Navegación`, `Bandejas`, `Pantallas`, `Procesos`, `Sucesion`, `Regex`, `SLA`, `Robot Acciones`/`Procesos`/`SubProcesos`/`Trámites`…
+- Documentos de `ConfigHeron`: `Accesos`, `Comentarios`, `Barra Navegación`, `Bandejas`, `Pantallas`, `Procesos`, `Sucesion`, `Regex`, `SLA`, `Robot Acciones`/`Procesos`/`SubProcesos`/`Trámites`…
+- **Comentario obligatorio (autoriza/rechaza):** documento `ConfigHeron "Comentarios"` → `Validaciones[tareaId][accionId]` con el mensaje en `Autoriza`/`Rechaza`; el motor exige que el último comentario del chat sea de ese tipo y del mismo usuario. → [Vista Lógica §2.4](02-vista-logica.md)
 
 Detalle → [Playbook §10](08-playbook-nuevo-tramite.md) · [Vista Lógica §2.3](02-vista-logica.md)
 

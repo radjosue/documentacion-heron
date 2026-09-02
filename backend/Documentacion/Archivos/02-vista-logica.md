@@ -223,15 +223,38 @@ La fase `filtro` del pipeline puede eliminar entradas de `visualizarDocumentos` 
 
 | Llave | Descripción |
 |---|---|
-| `usuario` | Identificador del usuario |
-| `area` | Área a la que pertenece |
+| `user` | Identificador (`nombreUsuario`) de quien escribió el comentario; el motor lo usa para validar la autoría |
+| `area` | Código de área del autor; se usa para filtrar la visibilidad del comentario por rol/área |
 | `foto` | URL de foto de perfil |
 | `nombre` | Nombre visible |
 | `hora` | Timestamp asignado por el frontend al enviar |
 | `contenido` | Objeto de texto enriquecido (Draft.js); soporta negritas, subrayado y archivos adjuntos |
-| `tipo` | `general` · `autoriza` · `rechaza` · `externo` · `area` |
+| `tipo` | `General` · `Autoriza` · `Rechaza` · `Externo` (el motor lo compara **capitalizado**) |
 
-El tipo `area` hace que el comentario sea visible solo para el área que lo escribió. La lista es de solo adición; no hay edición ni eliminación expuesta a los usuarios.
+La visibilidad se filtra por el `area` y el `tipo`: por ejemplo, los roles externos (agente, subagente, promotor, subpromotor, externo, asegurado) solo ven comentarios de ciertas áreas o de tipo `Externo`. La lista es de solo adición; no hay edición ni eliminación expuesta a los usuarios.
+
+#### Comentarios obligatorios (autoriza / rechaza)
+
+Un proceso puede **exigir un comentario** en el `historialChat` antes de ejecutar una acción —por ejemplo, obligar a dejar el motivo al **autorizar** o al **rechazar**—. Esto **no se configura en el JSON del proceso**, sino en `ConfigHeron`, documento `nombreId = "Comentarios"`, en la llave `Validaciones`, indexada por `tareaId` y luego por `accionId`:
+
+```json
+{
+  "Validaciones": {
+    "11-40-1.0-3": {
+      "Autorizar": { "Autoriza": "Debes dejar un comentario de autorización.", "Rechaza": null, "General": null, "Externo": null },
+      "Rechazar":  { "Rechaza": "Indica el motivo del rechazo.", "Autoriza": null, "General": null, "Externo": null }
+    }
+  }
+}
+```
+
+- `tareaId` — la tarea, sin el prefijo de folio (p. ej. `11-40-1.0-3`).
+- `accionId` — el botón que dispara la acción (`Autorizar`, `Rechazar`, …).
+- Valor por tipo (`Autoriza` · `Rechaza` · `General` · `Externo`): el **mensaje de error** a mostrar si falta el comentario, o `null` si ese tipo no se exige.
+
+Al ejecutar la acción en `AccionesTramite`, el motor verifica que el **último** comentario del `historialChat` sea del **tipo** requerido y lo haya escrito el **mismo usuario** que ejecuta la acción; si no, responde **400** con el mensaje configurado y no avanza. Lo resuelve el manager `ConfigHeron.objects.obtenerValidacionChat(tareaId, accionId)` y se aplica en `apiGeneral.py` (`APIAccionesTramite`).
+
+Ejemplo completo: [`EjemplosFlujo/07-configheron-comentarios.json`](../EjemplosFlujo/07-configheron-comentarios.json).
 
 ---
 

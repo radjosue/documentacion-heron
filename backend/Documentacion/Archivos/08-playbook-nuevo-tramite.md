@@ -18,6 +18,7 @@ Para el contexto arquitectónico completo consulta la [Arquitectura 4+1](../../.
 > | `../EjemplosFlujo/01-proceso-revision-documental.json` | Documento completo de la Tarea 1 (Captura): `frontend` + `backend` (validacion, actualizacion, sucesion) |
 > | `../EjemplosFlujo/02-tarea-autorizacion-sucesion.json` | Tarea de Autorización: bifurcación autoriza/rechaza y cierre del trámite |
 > | `../EjemplosFlujo/03-configheron-accesos.json` | Documento `ConfigHeron "Accesos"` que da visibilidad al proceso |
+> | `../EjemplosFlujo/07-configheron-comentarios.json` | Documento `ConfigHeron "Comentarios"`: comentario obligatorio para autorizar/rechazar |
 > | `../EjemplosFlujo/04-validacion-opciones.json` | Árbol `camposValidaciones` con `operador~alias`, `opciones` y comodín `*` |
 > | `../EjemplosFlujo/05-formulario-fields-inputs.json` | Formulario completo con `fields`: filas, inputs de texto/select/fecha/checkbox, `modifier`/`config`, `query` |
 > | `../EjemplosFlujo/06-etapa-forms-typeform.json` | Lista `forms` de una etapa combinando varios `typeForm` (Formulario, Domicilio, Select, Lista, Visualizador, Tabla) |
@@ -570,6 +571,16 @@ Documento `ConfigHeron "Procesos"` (adornos y textos de la UI del trámite, todo
 3. Inicia sesión con ese usuario → **Nuevo Trámite** → el área → debe listarse el proceso.
 4. Si no aparece: revisa el rol efectivo (aplicación `"3"`), la `vigencia`, y que el `areaId` en `Accesos` coincida con el `area` del proceso.
 
+### 10.5 Comentario obligatorio para autorizar / rechazar
+
+Para **forzar un comentario** antes de una acción (típicamente autorizar o rechazar) se usa el documento `ConfigHeron "Comentarios"`, llave `Validaciones`, indexada por `tareaId` y `accionId`:
+
+```json
+{ "Validaciones": { "11-40-1.0-3": { "Autorizar": { "Autoriza": "Deja un comentario de autorización.", "Rechaza": null, "General": null, "Externo": null } } } }
+```
+
+El motor exige que el **último** comentario del `historialChat` sea del **tipo** indicado (`Autoriza`/`Rechaza`/`General`/`Externo`, capitalizado) y del **mismo usuario** que ejecuta la acción; si falta, responde `400` con el mensaje. Se resuelve en `AccionesTramite` (`apiGeneral.py`) vía `ConfigHeron.objects.obtenerValidacionChat`. No se configura en el JSON del proceso. Detalle → [Vista Lógica §2.4](02-vista-logica.md); ejemplo → [`../EjemplosFlujo/07-configheron-comentarios.json`](../EjemplosFlujo/07-configheron-comentarios.json).
+
 ---
 
 ## 11. Reglas de nombrado
@@ -914,6 +925,7 @@ El motor expone cuatro endpoints principales (URLs con hash MD5) que todas las v
 | `01-proceso-revision-documental.json` | Documento completo de la Tarea 1 (Captura) |
 | `02-tarea-autorizacion-sucesion.json` | Bifurcación autoriza/rechaza y cierre del trámite |
 | `03-configheron-accesos.json` | Documento `ConfigHeron "Accesos"` |
+| `07-configheron-comentarios.json` | Documento `ConfigHeron "Comentarios"` (comentario obligatorio autoriza/rechaza) |
 | `04-validacion-opciones.json` | Árbol `camposValidaciones` con `operador~alias`, `opciones` y `*` |
 | `05-formulario-fields-inputs.json` | Formulario con `fields`: filas, inputs, `modifier`/`config`, `query` |
 | `06-etapa-forms-typeform.json` | Lista `forms` combinando varios `typeForm` |
